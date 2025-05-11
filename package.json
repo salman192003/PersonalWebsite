@@ -1,0 +1,25 @@
+{
+    "name": "personal-portfolio",
+    "version": "1.0.0",
+    "description": "Personal Portfolio Website - MERN Stack",
+    "main": "server.js",
+    "scripts": {
+        "start": "node backend/server.js",
+        "server": "nodemon backend/server.js",
+        "client": "npm start --prefix frontend",
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "build": "npm install && cd frontend && npm install && npm run build"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "mongoose": "^7.5.0",
+        "dotenv": "^16.3.1",
+        "cors": "^2.8.5",
+        "nodemailer": "^6.9.4"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1",
+        "concurrently": "^8.2.1"
+    },
+    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}
