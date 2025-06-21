@@ -18,7 +18,7 @@ const Resume = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.2 }}
-                            className="text-4xl font-light sketch-text text-black"
+                            className="text-4xl font-light text-black"
                         >
                             Resume
                         </motion.h1>
@@ -30,8 +30,8 @@ const Resume = () => {
                             Download PDF
                         </a>
                     </div>
-                    <svg className="w-64 h-1" viewBox="0 0 256 4">
-                        <line className="sketch-line" x1="0" y1="2" x2="256" y2="2" />
+                    <svg className="w-64 h-1 mb-4" viewBox="0 0 256 4">
+                        <line stroke="currentColor" strokeWidth="2" x1="0" y1="2" x2="256" y2="2" />
                     </svg>
                     <div className="space-y-16">
                         {/* Education Section */}
@@ -39,7 +39,7 @@ const Resume = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.3 }}
-                            className="space-y-4 sketch-text"
+                            className="space-y-4"
                         >
                             <h2 className="text-2xl font-light mb-2 text-black">Education</h2>
                             <div className="flex flex-col md:flex-row md:justify-between">
@@ -71,15 +71,15 @@ const Resume = () => {
                                 </div>
                             </div>
                         </motion.div>
-                        <svg className="w-48 h-1" viewBox="0 0 192 4">
-                            <line className="sketch-line" x1="0" y1="2" x2="192" y2="2" />
+                        <svg className="w-48 h-1 mb-4" viewBox="0 0 192 4">
+                            <line stroke="currentColor" strokeWidth="2" x1="0" y1="2" x2="192" y2="2" />
                         </svg>
                         {/* Experience Section */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4 }}
-                            className="space-y-4 sketch-text"
+                            className="space-y-4"
                         >
                             <h2 className="text-2xl font-light mb-2 text-black">Experience</h2>
                             <div className="flex flex-col md:flex-row md:justify-between">
@@ -107,15 +107,15 @@ const Resume = () => {
                                 </div>
                             </div>
                         </motion.div>
-                        <svg className="w-48 h-1" viewBox="0 0 192 4">
-                            <line className="sketch-line" x1="0" y1="2" x2="192" y2="2" />
+                        <svg className="w-48 h-1 mb-4" viewBox="0 0 192 4">
+                            <line stroke="currentColor" strokeWidth="2" x1="0" y1="2" x2="192" y2="2" />
                         </svg>
                         {/* Research Projects Section */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.5 }}
-                            className="space-y-4 sketch-text"
+                            className="space-y-4"
                         >
                             <h2 className="text-2xl font-light mb-2 text-black">Research Projects</h2>
                             <div className="flex flex-col md:flex-row md:justify-between">
@@ -131,15 +131,15 @@ const Resume = () => {
                                 </div>
                             </div>
                         </motion.div>
-                        <svg className="w-48 h-1" viewBox="0 0 192 4">
-                            <line className="sketch-line" x1="0" y1="2" x2="192" y2="2" />
+                        <svg className="w-48 h-1 mb-4" viewBox="0 0 192 4">
+                            <line stroke="currentColor" strokeWidth="2" x1="0" y1="2" x2="192" y2="2" />
                         </svg>
                         {/* Development Projects Section */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6 }}
-                            className="space-y-4 sketch-text"
+                            className="space-y-4"
                         >
                             <h2 className="text-2xl font-light mb-2 text-black">Development Projects</h2>
                             <div className="mb-4">
@@ -179,15 +179,15 @@ const Resume = () => {
                                 </ul>
                             </div>
                         </motion.div>
-                        <svg className="w-48 h-1" viewBox="0 0 192 4">
-                            <line className="sketch-line" x1="0" y1="2" x2="192" y2="2" />
+                        <svg className="w-48 h-1 mb-4" viewBox="0 0 192 4">
+                            <line stroke="currentColor" strokeWidth="2" x1="0" y1="2" x2="192" y2="2" />
                         </svg>
                         {/* Certifications Section */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.7 }}
-                            className="space-y-4 sketch-text"
+                            className="space-y-4"
                         >
                             <h2 className="text-2xl font-light mb-2 text-black">Certifications</h2>
                             <div className="mb-4">
@@ -205,15 +205,15 @@ const Resume = () => {
                                 </ul>
                             </div>
                         </motion.div>
-                        <svg className="w-48 h-1" viewBox="0 0 192 4">
-                            <line className="sketch-line" x1="0" y1="2" x2="192" y2="2" />
+                        <svg className="w-48 h-1 mb-4" viewBox="0 0 192 4">
+                            <line stroke="currentColor" strokeWidth="2" x1="0" y1="2" x2="192" y2="2" />
                         </svg>
                         {/* Technical Skills Section */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.8 }}
-                            className="space-y-4 sketch-text"
+                            className="space-y-4"
                         >
                             <h2 className="text-2xl font-light mb-2 text-black">Technical Skills</h2>
                             <div className="mb-2">
@@ -227,8 +227,8 @@ const Resume = () => {
                             </div>
                         </motion.div>
                     </div>
-                    <svg className="w-64 h-1" viewBox="0 0 256 4">
-                        <line className="sketch-line" x1="0" y1="2" x2="256" y2="2" />
+                    <svg className="w-64 h-1 mt-8" viewBox="0 0 256 4">
+                        <line stroke="currentColor" strokeWidth="2" x1="0" y1="2" x2="256" y2="2" />
                     </svg>
                 </motion.div>
             </div>

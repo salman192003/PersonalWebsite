@@ -37,10 +37,7 @@ module.exports = {
                 },
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                mono: ['JetBrains Mono', 'monospace'],
-                'orbitron': ['Orbitron', 'sans-serif'],
-                'space-grotesk': ['Space Grotesk', 'sans-serif'],
+                sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'],
             },
             spacing: {
                 '128': '32rem',

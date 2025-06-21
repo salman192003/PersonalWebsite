@@ -124,12 +124,12 @@ const Home = () => {
                 <div className="w-full lg:w-2/5 lg:pr-8 mb-8 lg:mb-0">
                     <div className="space-y-6">
                         <svg className="w-64 h-1 mb-4" viewBox="0 0 256 4">
-                            <line className="sketch-line" x1="0" y1="2" x2="256" y2="2" />
+                            <line stroke="currentColor" strokeWidth="2" x1="0" y1="2" x2="256" y2="2" />
                         </svg>
-                        <p className="text-[24px] font-medium tracking-tight text-orange-500 sketch-text">
+                        <p className="text-[24px] font-medium tracking-tight text-orange-500">
                             Hello, I'm Salman.
                         </p>
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight sketch-text text-black">
+                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-black">
                             Welcome to My Digital Space
                         </h1>
                         <p className="text-lg md:text-xl leading-relaxed font-medium tracking-tight text-gray-600 dark:text-gray-300">
@@ -151,7 +151,7 @@ const Home = () => {
                             </button>
                         </div>
                         <svg className="w-64 h-1 mt-8" viewBox="0 0 256 4">
-                            <line className="sketch-line" x1="0" y1="2" x2="256" y2="2" />
+                            <line stroke="currentColor" strokeWidth="2" x1="0" y1="2" x2="256" y2="2" />
                         </svg>
                     </div>
                 </div>
@@ -171,7 +171,7 @@ const Home = () => {
                 variants={sectionVariants}
             >
                 <div className="max-w-6xl mx-auto">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center sketch-text text-black">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-black">
                         About Me
                     </h2>
                     <div className="max-w-4xl mx-auto text-center">
@@ -198,7 +198,7 @@ const Home = () => {
                 variants={sectionVariants}
             >
                 <div className="max-w-6xl mx-auto">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center sketch-text text-black">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-black">
                         Featured Projects
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
@@ -290,7 +290,7 @@ const Home = () => {
                 variants={sectionVariants}
             >
                 <div className="max-w-6xl mx-auto">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center sketch-text text-black">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-black">
                         Resume
                     </h2>
                     <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -411,7 +411,7 @@ const Home = () => {
                 variants={sectionVariants}
             >
                 <div className="max-w-6xl mx-auto">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center sketch-text text-black">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-black">
                         Get In Touch
                     </h2>
                     <div className="grid lg:grid-cols-2 gap-16">
