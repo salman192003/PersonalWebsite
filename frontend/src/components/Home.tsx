@@ -389,7 +389,7 @@ const Home = () => {
                     <div className="text-center mt-16">
                         <a
                             href="/CV.pdf"
-                            download
+                            download="Salman_Ajmal_Resume.pdf"
                             className="px-8 py-4 text-lg font-medium bg-orange-500 text-gray-100 hover:bg-orange-600 transition-all duration-300 rounded-lg inline-flex items-center gap-3"
                         >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

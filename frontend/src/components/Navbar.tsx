@@ -29,18 +29,10 @@ const Navbar = () => {
                     {/* Logo */}
                     <button
                         onClick={() => scrollToSection('home')}
-                        className="minimal-text text-xl font-bold cursor-pointer text-black flex items-center"
+                        className="text-2xl font-bold cursor-pointer text-orange-500 hover:text-orange-600 transition-colors duration-300"
                         aria-label="Home"
                     >
-                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2">
-                            {/* Minimal SA Logo */}
-                            <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                            <path d="M8 12L16 12L16 28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M12 16L16 12L20 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M24 12L32 12L32 28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M24 20L28 16L32 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <circle cx="20" cy="20" r="1" fill="currentColor" />
-                        </svg>
+                        SA
                     </button>
 
                     {/* Desktop Navigation */}
