@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap');
+
+:root {
+  --mac-black: #000000;
+  --mac-white: #ffffff;
+  --mac-grey: #333333;
+  --mac-light: #666666;
+  --mac-accent: #ff3e3e;
+  --mac-window-bg: rgba(0, 0, 0, 0.85);
+  --mac-title-bar: rgba(51, 51, 51, 0.95);
+  --mac-border: rgba(255, 62, 62, 0.3);
+  --mac-bg: #1a1a1a;
+  --mac-text: #ffffff;
+  --mac-button-red: #ff5f57;
+  --mac-button-yellow: #febc2e;
+  --mac-button-green: #28c840;
+}
+
+/* Base styles */
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--mac-bg);
+  color: var(--mac-text);
+  overflow-x: hidden;
+  padding: 0;
+  min-height: 100vh;
+  background-image:
+    linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px),
+    linear-gradient(to right,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg,
+      rgba(255, 255, 255, 0.02) 0%,
+      transparent 20%,
+      transparent 80%,
+      rgba(255, 255, 255, 0.02) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Minimal styles */
+.minimal-text {
+  text-shadow:
+    0 0 5px var(--mac-light),
+    0 0 10px var(--mac-light);
+}
+
+.minimal-button {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 1px solid var(--mac-light);
+  color: var(--mac-white);
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.minimal-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(102, 102, 102, 0.1),
+      transparent);
+  transition: 0.5s;
+}
+
+.minimal-button:hover::before {
+  left: 100%;
+}
+
+.minimal-button:hover {
+  background: var(--mac-light);
+  color: var(--mac-black);
+  box-shadow: 0 0 20px var(--mac-light);
+  transform: translateY(-2px);
+}
+
+.minimal-nav {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--mac-light);
+}
+
+.minimal-nav-link {
+  position: relative;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.minimal-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--mac-light);
+  transition: width 0.3s ease;
+}
+
+.minimal-nav-link:hover::after {
+  width: 100%;
+}
+
+/* Mac window styles */
+.mac-window {
+  background: var(--mac-window-bg);
+  border: 1px solid var(--mac-border);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.mac-window.dragging {
+  transform: scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.mac-window-header {
+  background: var(--mac-title-bar);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--mac-border);
+  cursor: move;
+}
+
+.mac-window-header:active {
+  cursor: grabbing;
+}
+
+.mac-window-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.mac-window-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.mac-window-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.mac-window-button.close {
+  background: var(--mac-button-red);
+}
+
+.mac-window-button.close:hover::before {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.mac-window-button.minimize {
+  background: var(--mac-button-yellow);
+}
+
+.mac-window-button.minimize:hover::before {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.mac-window-button.maximize {
+  background: var(--mac-button-green);
+}
+
+.mac-window-button.maximize:hover::before {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.mac-window-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mac-text);
+  flex: 1;
+  text-align: center;
+  margin: 0 12px;
+}
+
+.mac-window-content {
+  padding: 16px;
+  color: var(--mac-text);
+}
+
+.mac-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mac-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mac-accent);
+}
+
+/* Mac window animations */
+.mac-window-open {
+  animation: windowOpen 0.5s ease-out;
+}
+
+@keyframes windowOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
