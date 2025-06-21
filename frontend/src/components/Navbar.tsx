@@ -32,13 +32,14 @@ const Navbar = () => {
                         className="minimal-text text-xl font-bold cursor-pointer text-black flex items-center"
                         aria-label="Home"
                     >
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2">
-                            {/* Futuristic geometric logo */}
-                            <path d="M8 8L24 8L24 24L8 24L8 8Z" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                            <path d="M12 12L20 12L20 20L12 20L12 12Z" stroke="currentColor" strokeWidth="1" fill="none" />
-                            <circle cx="16" cy="16" r="2" fill="currentColor" />
-                            <path d="M8 8L24 24" stroke="currentColor" strokeWidth="0.5" opacity="0.6" />
-                            <path d="M24 8L8 24" stroke="currentColor" strokeWidth="0.5" opacity="0.6" />
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2">
+                            {/* Minimal SA Logo */}
+                            <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                            <path d="M8 12L16 12L16 28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M12 16L16 12L20 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M24 12L32 12L32 28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M24 20L28 16L32 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <circle cx="20" cy="20" r="1" fill="currentColor" />
                         </svg>
                     </button>
 
