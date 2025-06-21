@@ -366,7 +366,7 @@ const Home = () => {
                                 <h3 className="text-3xl font-bold mb-8 text-black">Education</h3>
                                 <div className="space-y-6">
                                     <div>
-                                        <h5 className="font-semibold text-lg text-black">Lahore University of Management and Sciences</h5>
+                                        <h5 className="font-semibold text-lg text-black">Lahore University of Management Sciences</h5>
                                         <p className="text-gray-600 dark:text-gray-300">BSc. Computer Science</p>
                                         <p className="text-sm text-gray-500">May. 2026 | Lahore, Pakistan</p>
                                         <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">Dean's Honor List</p>
