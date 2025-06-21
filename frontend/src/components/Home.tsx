@@ -101,6 +101,23 @@ const Home = () => {
         }
     };
 
+    const handleDownloadResume = () => {
+        try {
+            const link = document.createElement('a');
+            // Use the full URL to ensure it works in all environments
+            link.href = `${window.location.origin}/CV.pdf`;
+            link.download = 'Salman_Ajmal_Resume.pdf';
+            link.target = '_blank';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } catch (error) {
+            console.error('Download failed:', error);
+            // Fallback: open in new tab
+            window.open('/CV.pdf', '_blank');
+        }
+    };
+
     const sectionVariants = {
         hidden: { opacity: 0, y: 50 },
         visible: {
@@ -387,16 +404,15 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="text-center mt-16">
-                        <a
-                            href="/CV.pdf"
-                            download="Salman_Ajmal_Resume.pdf"
+                        <button
+                            onClick={handleDownloadResume}
                             className="px-8 py-4 text-lg font-medium bg-orange-500 text-gray-100 hover:bg-orange-600 transition-all duration-300 rounded-lg inline-flex items-center gap-3"
                         >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
                             Download Resume (PDF)
-                        </a>
+                        </button>
                     </div>
                 </div>
             </motion.section>
