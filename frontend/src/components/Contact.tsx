@@ -113,17 +113,6 @@ const Contact = () => {
                                     LinkedIn Profile
                                 </a>
                             </div>
-                            <div className="flex items-center space-x-4">
-                                <div className="mac-icon">🐙</div>
-                                <a
-                                    href="https://github.com/yourusername"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-white/80 hover:text-white transition-colors"
-                                >
-                                    GitHub Profile
-                                </a>
-                            </div>
                         </div>
                     </ContactWindow>
                 </div>

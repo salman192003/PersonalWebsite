@@ -6,49 +6,42 @@ const projects = [
         title: "Vision Transformer Compression",
         description: "Developed a compact ViT training framework leveraging saliency maps for guided distillation and curriculum learning for improved generalization. The project, conducted under the supervision of Dr. Murtaza Taj, involved extensive literature review of existing ViT architectures and key advancements in computer vision.",
         technologies: ["Deep Learning", "Vision Transformers", "PyTorch", "Computer Vision"],
-        github: "https://github.com/yourusername/vit-compression",
         demo: ""
     },
     {
         title: "EmCon – Hospital Lookup & Blood Request Platform",
         description: "Built a multi-user web platform connecting multiple hospitals, with distinct interfaces for patients, medical staff, and administrators. Features real-time blood requests, ML based wait-time predictions, and an interactive navigation chatbot. Developed using React, Node.js, Express, and MongoDB with extensive UI/UX iterations for optimal user experience.",
         technologies: ["React", "Node.js", "Express", "MongoDB", "Machine Learning", "Chatbot"],
-        github: "https://github.com/yourusername/emcon",
         demo: ""
     },
     {
         title: "Consumer Behavior Analytics",
         description: "Analyzed large-scale consumer datasets to forecast sales revenue and uncover purchasing trends using machine learning models. Applied clustering algorithms to segment customers based on behavioral patterns, enabling data-driven insights for targeted marketing and revenue optimization.",
         technologies: ["Python", "Machine Learning", "Data Science"],
-        github: "https://github.com/yourusername/consumer-behavior-analytics",
         demo: ""
     },
     {
         title: "News Recommendation System",
         description: "Built an end-to-end pipeline to scrape news articles from the web and classify them into relevant categories using NLP techniques. Used multiple models to optimize classification accuracy for real-world news filtering and content recommendation systems.",
         technologies: ["Python", "NLP", "Machine Learning"],
-        github: "https://github.com/yourusername/news-recommender",
         demo: ""
     },
     {
         title: "Filesystems, Threads & Memory (Operating Systems)",
         description: "Completed a series of project-based implementations focused on core operating system components, including a simplified UNIX file system, a POSIX-compliant threading library, and a dynamic memory allocator. Emphasized hands-on development to optimize resource management, concurrency, and system performance.",
         technologies: ["C/C++", "Operating Systems", "UNIX", "POSIX"],
-        github: "https://github.com/yourusername/os-projects",
         demo: ""
     },
     {
         title: "Network-Centric Computing & Network Security",
         description: "Developed a scalable Distributed Hash Table (DHT) for decentralized systems with robust protocols for fault tolerance and data optimization; implemented secure OAuth 2.0 authentication and standards-compliant login systems to enhance web application security and prevent common vulnerabilities.",
         technologies: ["Distributed Systems", "Network Security", "OAuth 2.0"],
-        github: "https://github.com/yourusername/network-security",
         demo: ""
     },
     {
         title: "Data Structures & Algorithms",
         description: "Completed challenging projects across two intensive courses, applying and optimising advanced data structures for real-world problems. Demonstrated strong algorithmic thinking and theoretical depth through custom implementations and complex problem-solving.",
         technologies: ["C/C++", "Java", "Algorithms", "Data Structures"],
-        github: "https://github.com/yourusername/dsa-projects",
         demo: ""
     }
 ];
@@ -113,16 +106,6 @@ const ProjectWindow: React.FC<ProjectWindowProps> = ({ project, index, isVisible
                         ))}
                     </div>
                     <div className="flex justify-end gap-2 mt-4">
-                        {project.github && (
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-sm"
-                                onClick={() => window.open(project.github, '_blank')}
-                            >
-                                GitHub
-                            </motion.button>
-                        )}
                         {project.demo && (
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
