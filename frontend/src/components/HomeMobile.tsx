@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import MobileNav from './MobileNav';
 
 const HomeMobile = () => {
     const [activeSection, setActiveSection] = useState('home');
-    const { scrollYProgress } = useScroll();
-    const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
     useEffect(() => {
         const handleScroll = () => {
