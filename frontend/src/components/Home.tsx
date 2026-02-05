@@ -1,64 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-
-// Declare the custom element for TypeScript/JSX
-// eslint-disable-next-line @typescript-eslint/no-namespace
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            'spline-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { url: string };
-        }
-    }
-}
-
-const SplineViewerEmbed = () => {
-    const viewerRef = useRef<HTMLElement>(null);
-
-    useEffect(() => {
-        // Dynamically add the Spline viewer script
-        const scriptSrc = "https://unpkg.com/@splinetool/viewer@1.10.12/build/spline-viewer.js";
-        if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
-            const script = document.createElement('script');
-            script.type = 'module';
-            script.src = scriptSrc;
-            document.body.appendChild(script);
-        }
-
-        const viewer = viewerRef.current;
-
-        const handleLoad = (e: Event) => {
-            // Target the shadow root of the spline-viewer
-            const splineViewer = e.target as any;
-            const shadowRoot = splineViewer.shadowRoot;
-            if (shadowRoot) {
-                const logo = shadowRoot.querySelector('#logo');
-                if (logo) {
-                    // Hide the logo
-                    logo.style.display = 'none';
-                }
-            }
-        };
-
-        if (viewer) {
-            viewer.addEventListener('load', handleLoad);
-        }
-
-        return () => {
-            if (viewer) {
-                viewer.removeEventListener('load', handleLoad);
-            }
-        };
-    }, []);
-    return (
-        <div className="w-full h-[60vh] md:h-[65vh] lg:h-[70vh]">
-            <spline-viewer
-                ref={viewerRef}
-                url="https://prod.spline.design/I16M6hlezeFVKPyx/scene.splinecode"
-                style={{ width: '100%', height: '100%', border: 'none', borderRadius: 0 }}
-            />
-        </div>
-    );
-};
 
 const Home = () => {
     const experiences = [
@@ -129,18 +70,18 @@ const Home = () => {
 
     return (
         <div className="min-h-screen">
-            {/* Hero Section with Text and Animation */}
+            {/* Hero Section with Text */}
             <motion.section
                 id="home"
-                className="flex flex-col lg:flex-row items-center justify-center min-h-[60vh] md:min-h-[65vh] lg:min-h-[70vh] px-4 md:px-8 lg:px-16"
+                className="flex flex-col items-center justify-center min-h-[60vh] md:min-h-[65vh] lg:min-h-[70vh] px-4 md:px-8 lg:px-16"
                 initial="hidden"
                 animate="visible"
                 variants={sectionVariants}
             >
-                {/* Left: Hero Text */}
-                <div className="w-full lg:w-2/5 lg:pr-8 mb-8 lg:mb-0">
+                {/* Hero Text */}
+                <div className="max-w-4xl mx-auto text-center">
                     <div className="space-y-6">
-                        <svg className="w-64 h-1 mb-4" viewBox="0 0 256 4">
+                        <svg className="w-64 h-1 mb-4 mx-auto" viewBox="0 0 256 4">
                             <line stroke="currentColor" strokeWidth="2" x1="0" y1="2" x2="256" y2="2" />
                         </svg>
                         <p className="text-[24px] font-medium tracking-tight text-orange-500">
@@ -150,10 +91,9 @@ const Home = () => {
                             Welcome to My Digital Space
                         </h1>
                         <p className="text-lg md:text-xl leading-relaxed font-medium tracking-tight text-gray-600 dark:text-gray-300">
-                            I'm a senior Computer Science student at LUMS, with a passion for Artificial Intelligence and Web Development. I love building things that blend creativity and technology—always curious, always learning, and always ready for the next challenge.<br />
-                            <span className="block mt-4">Curious? Explore the interactive animation on the right—try zooming in and maybe even pressing a few keys to see what happens!</span>
+                            I'm a senior Computer Science student at LUMS, with a passion for Artificial Intelligence and Web Development. I love building things that blend creativity and technology—always curious, always learning, and always ready for the next challenge.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4">
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <button
                                 onClick={() => scrollToSection('projects')}
                                 className="px-6 py-3 text-[17px] font-medium bg-orange-500 text-white hover:bg-orange-600 transition-all duration-300 rounded-lg text-center"
@@ -167,14 +107,10 @@ const Home = () => {
                                 Get in Touch
                             </button>
                         </div>
-                        <svg className="w-64 h-1 mt-8" viewBox="0 0 256 4">
+                        <svg className="w-64 h-1 mt-8 mx-auto" viewBox="0 0 256 4">
                             <line stroke="currentColor" strokeWidth="2" x1="0" y1="2" x2="256" y2="2" />
                         </svg>
                     </div>
-                </div>
-                {/* Right: Spline Animation */}
-                <div className="w-full lg:w-3/5 lg:pl-8">
-                    <SplineViewerEmbed />
                 </div>
             </motion.section>
 
