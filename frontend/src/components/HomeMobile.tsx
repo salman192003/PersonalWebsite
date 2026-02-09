@@ -36,42 +36,48 @@ const HomeMobile = () => {
     const projects = [
         {
             title: "EmCon Medical Platform",
-            description: "Multi-hospital connectivity with predictive wait time estimation",
-            tech: ["React", "Node.js", "MongoDB"],
+            description: "Full-stack multi-hospital system with predictive ML models for wait time estimation (90%+ accuracy)",
+            tech: ["React", "Node.js", "MongoDB", "PyTorch"],
             gradient: "from-purple-500 to-pink-500"
         },
         {
             title: "FinTrack App",
-            description: "Cross-platform personal finance & budgeting solution",
+            description: "Cross-platform personal finance app with smart budgeting engine and real-time tracking",
             tech: ["React", "Flutter", "Figma"],
             gradient: "from-blue-500 to-cyan-500"
         },
         {
-            title: "Consumer Analytics",
-            description: "Sales forecasting with ML achieving 70% accuracy",
-            tech: ["Python", "Scikit-learn", "Pandas"],
+            title: "News Recommendation System",
+            description: "Real-time pipeline with BERT embeddings for content classification and personalized recommendations",
+            tech: ["Python", "BERT", "TensorFlow"],
             gradient: "from-orange-500 to-red-500"
+        },
+        {
+            title: "Generative & Transformer Models",
+            description: "VAEs, Diffusion Models, and optimized Vision Transformers achieving 20% faster inference",
+            tech: ["PyTorch", "TensorFlow", "Hugging Face"],
+            gradient: "from-blue-500 to-purple-500"
         }
     ];
 
     const researchItems = [
         {
             title: "Research Intern",
-            company: "CV & Graphics Lab | LUMS",
+            company: "Computer Vision & Graphics Lab | LUMS",
             date: "May 2025 - Present",
-            description: "ViT-based IRKD model achieving 40% reduction in training time"
+            description: "Designed ViT-based IRKD model with knowledge distillation achieving 40% reduction in training time"
         },
         {
             title: "Professional Fellowship",
-            company: "Software Engineering",
+            company: "Dev Weekends - Software Engineering",
             date: "Jun 2025 - Present",
-            description: "Advanced DSA, system design, and full-stack engineering"
+            description: "12 intensive workshops on advanced DSA, system design, and scalable backend systems"
         },
         {
             title: "Teaching Assistant",
-            company: "Digital Logic | LUMS",
+            company: "Digital Logic Circuit & Design | LUMS",
             date: "Jan 2025 - May 2025",
-            description: "Led weekly labs for 120+ students on circuit design"
+            description: "Led weekly labs for 120+ students, mentored 10+ advanced projects on circuit simulation"
         }
     ];
 
@@ -199,10 +205,23 @@ const HomeMobile = () => {
                         transition={{ delay: 0.2, duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        <div>
-                            <h3 className="text-sm font-semibold text-orange-500 mb-3">Technical Skills</h3>
+                        <div className="mb-4">
+                            <h3 className="text-sm font-semibold text-orange-500 mb-3">Languages</h3>
                             <div className="flex flex-wrap gap-2">
-                                {['Python', 'TypeScript', 'React', 'PyTorch', 'Node.js', 'MongoDB'].map((skill, i) => (
+                                {['Python', 'C++', 'C', 'TypeScript', 'JavaScript', 'HTML/CSS', 'Dart'].map((skill, i) => (
+                                    <span
+                                        key={i}
+                                        className="px-4 py-2 glass-card text-white text-sm font-medium"
+                                    >
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="mb-4">
+                            <h3 className="text-sm font-semibold text-orange-500 mb-3">Frameworks & Tools</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {['React', 'Express.js', 'PyTorch', 'TensorFlow', 'Keras', 'Flutter', 'Git', 'Docker', 'MongoDB'].map((skill, i) => (
                                     <span
                                         key={i}
                                         className="px-4 py-2 glass-card text-white text-sm font-medium"
@@ -247,18 +266,41 @@ const HomeMobile = () => {
                                         Lahore University of Management Sciences
                                     </h3>
                                     <p className="text-orange-500 text-sm mb-2">
-                                        BSc. Computer Science • May 2026
+                                        BSc. Computer Science • Expected May 2026
                                     </p>
                                 </div>
                             </div>
                             <p className="text-gray-400 text-sm pl-5 mb-2">
                                 Lahore, Pakistan
                             </p>
-                            <p className="text-gray-300 text-sm pl-5 font-medium">
-                                Dean's Honor List
-                            </p>
+                            <div className="text-gray-300 text-sm pl-5 space-y-1">
+                                <p className="font-medium">Dean's Honor List</p>
+                                <p className="text-gray-400">Relevant Coursework: Data Science, Deep Learning, Machine Learning, Algorithms</p>
+                            </div>
                         </motion.div>
 
+                        <motion.div
+                            className="glass-card p-6"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1, duration: 0.6 }}
+                            viewport={{ once: true }}
+                        >
+                            <div className="flex items-start gap-3 mb-3">
+                                <div className="w-2 h-2 rounded-full bg-orange-500 mt-2" />
+                                <div>
+                                    <h3 className="text-lg font-bold text-white mb-1 sf-display">
+                                        Hertie School
+                                    </h3>
+                                    <p className="text-orange-500 text-sm mb-2">
+                                        Data Science Summer School • Aug 2023
+                                    </p>
+                                </div>
+                            </div>
+                            <p className="text-gray-400 text-sm pl-5">
+                                Berlin, Germany (Remote)
+                            </p>
+                        </motion.div>
 
                         <motion.div
                             className="glass-card p-6"
@@ -274,7 +316,7 @@ const HomeMobile = () => {
                                         Cedar College
                                     </h3>
                                     <p className="text-orange-500 text-sm mb-2">
-                                        A Levels, Cambridge International • May 2022
+                                        A Levels • May 2022
                                     </p>
                                 </div>
                             </div>
