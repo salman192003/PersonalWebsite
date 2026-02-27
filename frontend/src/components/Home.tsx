@@ -4,30 +4,32 @@ import { motion } from 'framer-motion';
 const Home = () => {
     const experiences = [
         {
-            title: "Research Intern",
-            company: "Computer Vision & Graphics Lab | LUMS",
-            date: "May 2025-Present",
+            title: "Full Stack Development Intern",
+            company: "10Pearls Pakistan",
+            date: "Dec. 2025 – Feb. 2026",
             description: [
-                "Designed a ViT-based IRKD model for image classification using knowledge distillation, curriculum learning, and architectural enhancements achieving a 40% reduction in training time.",
-                "Collaborated with other researchers to critically evaluate existing transformer architectures and jointly identify key limitations, leading to the design of a more efficient and generalizable approach."
+                "Engineered a multi-tenant SaaS task management platform using ASP.NET Core and React, supporting concurrent multi-user workflows.",
+                "Designed and optimized relational schemas in SQL Server, improving query efficiency and ensuring structured data integrity.",
+                "Improved deployment reliability by implementing CI/CD automation with xUnit and SonarQube, achieving 85% test coverage."
             ]
         },
         {
-            title: "Professional Fellowship",
-            company: "Software Engineering | Dev Weekends",
-            date: "June 2025-Present",
+            title: "Software Development Intern",
+            company: "Netsol Technologies Ltd.",
+            date: "July 2025 – Aug. 2025",
             description: [
-                "Selected for a competitive fellowship focused on advanced DSA, system design, and full-stack engineering through 12 intensive weekend workshops.",
-                "On track to complete 12 projects and a capstone on scalable backend systems with Node.js, Express, MongoDB, and RESTful APIs."
+                "Architected backend systems into microservices using Java (Spring Boot), defining service boundaries and implementing inter-service REST communication.",
+                "Evaluated multiple computer vision models for varied application use cases, optimized and retrained models to improve performance, and integrated a Django-based inference pipeline to speed up real-time predictions.",
+                "Collaborated with cross-functional teams in an Agile sprint cycle, delivering project milestones ahead of schedule and selected from 10 peer teams to present to senior engineering leadership."
             ]
         },
         {
-            title: "Teachers Assistant",
-            company: "Digital Logic Circuit and Design | LLUMS",
-            date: "Jan 2025 - May 2025",
+            title: "Teaching Assistant, Algorithms",
+            company: "Lahore University of Management Sciences",
+            date: "Aug. 2025 – Dec. 2025",
             description: [
-                "Supported a 120-student undergraduate course by leading weekly lab sessions on hardware modeling, circuit simulation and digital system design.",
-                "Mentored 10+ advanced student projects, strengthening skills in system architecture and digital circuit design through in-depth technical guidance."
+                "Designed and reviewed assessments for a 300+ student Data Structures & Algorithms course, ensuring rigorous alignment with core algorithmic concepts.",
+                "Collaborated with the course instructor on exam design and evaluation processes, and conducted weekly office hours to strengthen student understanding of advanced data structures and algorithmic problem-solving."
             ]
         }
     ];
@@ -90,7 +92,7 @@ const Home = () => {
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-black">
                             Welcome to My Digital Space
                         </h1>
-                        <p className="text-lg md:text-xl leading-relaxed font-medium tracking-tight text-gray-600 dark:text-gray-300">
+                        <p className="text-lg md:text-xl leading-relaxed font-medium tracking-tight text-gray-600">
                             I'm a senior Computer Science student at LUMS, with a passion for Artificial Intelligence and Web Development. I love building things that blend creativity and technology—always curious, always learning, and always ready for the next challenge.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -102,7 +104,7 @@ const Home = () => {
                             </button>
                             <button
                                 onClick={() => scrollToSection('contact')}
-                                className="px-6 py-3 text-[17px] font-medium border border-orange-500 text-black dark:text-white hover:bg-orange-500 hover:text-white transition-all duration-300 rounded-lg text-center"
+                                className="px-6 py-3 text-[17px] font-medium border border-orange-500 text-black hover:bg-orange-500 hover:text-white transition-all duration-300 rounded-lg text-center"
                             >
                                 Get in Touch
                             </button>
@@ -117,7 +119,7 @@ const Home = () => {
             {/* Detailed About Section */}
             <motion.section
                 id="about"
-                className="scroll-mt-24 py-20 px-4 md:px-8 lg:px-16 bg-gray-50 dark:bg-gray-900"
+                className="scroll-mt-24 py-20 px-4 md:px-8 lg:px-16 bg-gray-50"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
@@ -128,13 +130,13 @@ const Home = () => {
                         About Me
                     </h2>
                     <div className="max-w-4xl mx-auto text-center">
-                        <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        <p className="text-lg text-gray-600 mb-6">
                             I'm a developer with a deep appreciation for thoughtful design and a strong focus on building clean, expressive web experiences. I believe the best interfaces are the ones that feel effortless—simple, yet impactful.
                         </p>
-                        <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        <p className="text-lg text-gray-600 mb-6">
                             My work centers on minimalism, but I'm always exploring how to make websites more intelligent and useful. I'm especially interested in how machine learning and data science can enhance the user experience and bring more value to digital products.
                         </p>
-                        <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        <p className="text-lg text-gray-600 mb-6">
                             I'm constantly learning—whether through hands-on projects, staying up to date with the latest in tech, or simply learning from the people around me. I'm especially drawn to the exciting developments happening in Artificial Intelligence and how they're reshaping the future of the web.
                         </p>
                     </div>
@@ -144,7 +146,7 @@ const Home = () => {
             {/* Expanded Projects Section */}
             <motion.section
                 id="projects"
-                className="scroll-mt-24 py-20 px-4 md:px-8 lg:px-16 bg-gray-50 dark:bg-gray-900"
+                className="scroll-mt-24 py-20 px-4 md:px-8 lg:px-16 bg-gray-50"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
@@ -155,78 +157,58 @@ const Home = () => {
                         Featured Projects
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
-                        {/* Software Engineering Projects First */}
-                        <motion.div whileHover={{ y: -8, scale: 1.03 }} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
-                            <h3 className="text-xl font-bold mb-3 text-black">EmCon – Multi-Hospital Medical Platform</h3>
-                            <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                                Developed a secure, full-stack, multi-user web application with React.js and Node.js designed for seamless inter-hospital connectivity and featuring distinct user interfaces for doctors, administrators, and patients across multiple healthcare facilities. Worked in a cross-functional Agile team for 12 weeks, contributing to sprints, code reviews, and stand-ups for continuous delivery. Integrated a predictive model for wait time estimation, achieving 90%+ accuracy in estimating patient queue times, which significantly optimized patient flow and enhanced overall hospital efficiency.
-                            </p>
+                        <motion.div whileHover={{ y: -8, scale: 1.03 }} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
+                            <h3 className="text-xl font-bold mb-3 text-black">Algnosis – AI Diagnosis Platform <span className='font-normal italic text-gray-500'>| Java Spring Boot, MongoDB, React, PyTorch</span></h3>
+                            <ul className="list-disc list-inside text-gray-600 mb-4 flex-grow pl-4 space-y-1">
+                                <li>Built an AI-driven diagnosis platform for multi-modal medical data (MRI, CT, blood reports) using computer vision models.</li>
+                                <li>Implemented REST APIs in Java (Spring Boot) and integrated PyTorch inference to deliver automated analysis and reporting.</li>
+                                <li>Improved model performance by optimizing and retraining classifiers, achieving up to 30% higher accuracy on the best-performing variant.</li>
+                            </ul>
                             <div className="flex flex-wrap gap-2 mb-4">
+                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Java Spring Boot</span>
                                 <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">MongoDB</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Express.js</span>
                                 <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">React</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Node.js</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Python</span>
                                 <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">PyTorch</span>
                             </div>
                         </motion.div>
-                        <motion.div whileHover={{ y: -8, scale: 1.03 }} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
-                            <h3 className="text-xl font-bold mb-3 text-black">FinTrack – Personal Finance & Budgeting App <span className='font-normal italic text-gray-500'>| React, Flutter DevTools, Figma</span></h3>
-                            <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 mb-4 flex-grow pl-4">
-                                <li>Spearheaded the design and development of a cross-platform personal finance app, transforming Figma mockups into an intuitive, user-centric interface focused on accessibility and seamless user flow.</li>
-                                <li>Interviewed 10+ target users and iteratively refined UX flows based on feedback, resulting in improved usability and higher user engagement, in line with Agile development practices.</li>
-                                <li>Built a smart budgeting engine with real-time tracking and personalized insights to enhance user experience and financial habits.</li>
+                        <motion.div whileHover={{ y: -8, scale: 1.03 }} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
+                            <h3 className="text-xl font-bold mb-3 text-black">EmCon – Multi-Hospital Management <span className='font-normal italic text-gray-500'>| Node.js, MongoDB, Express</span></h3>
+                            <ul className="list-disc list-inside text-gray-600 mb-4 flex-grow pl-4 space-y-1">
+                                <li>Built a multi-hospital patient management system using Node.js and MongoDB, enabling centralized data access and resource allocation.</li>
+                                <li>Developed REST APIs using Node.js (Express) with JWT-based authentication for role-based access control and multi-tenant isolation.</li>
+                                <li>Collaborated in a structured 12-week Agile sprint, participating in sprint planning, task breakdown, code reviews, and iterative feature delivery.</li>
+                            </ul>
+                            <div className="flex flex-wrap gap-2 mb-4">
+                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Node.js</span>
+                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">MongoDB</span>
+                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Express</span>
+                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">JWT</span>
+                            </div>
+                        </motion.div>
+                        <motion.div whileHover={{ y: -8, scale: 1.03 }} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
+                            <h3 className="text-xl font-bold mb-3 text-black">Taskly – Task Management System <span className='font-normal italic text-gray-500'>| ASP.NET Core, React, xUnit, SonarQube</span></h3>
+                            <ul className="list-disc list-inside text-gray-600 mb-4 flex-grow pl-4 space-y-1">
+                                <li>Designed and developed an enterprise-grade task management system with role-based access control and concurrent multi-user support.</li>
+                                <li>Built backend REST APIs, optimized database queries, implemented caching, and integrated automated testing pipelines to ensure system reliability.</li>
+                                <li>Improved application performance by reducing request latency by 25% through query optimization and caching for scalable multi-user workloads.</li>
+                            </ul>
+                            <div className="flex flex-wrap gap-2 mb-4">
+                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">ASP.NET Core</span>
+                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">React</span>
+                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">xUnit</span>
+                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">SonarQube</span>
+                            </div>
+                        </motion.div>
+                        <motion.div whileHover={{ y: -8, scale: 1.03 }} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
+                            <h3 className="text-xl font-bold mb-3 text-black">FinTrack – Student Expense Tracker <span className='font-normal italic text-gray-500'>| React, Tailwind CSS, Figma</span></h3>
+                            <ul className="list-disc list-inside text-gray-600 mb-4 flex-grow pl-4 space-y-1">
+                                <li>Designed a student expense tracking application with focus on intuitive screens, Figma wireframes, and user-centered design.</li>
+                                <li>Implemented frontend in React with Tailwind CSS, creating dynamic UI components and responsive layouts.</li>
                             </ul>
                             <div className="flex flex-wrap gap-2 mb-4">
                                 <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">React</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Flutter DevTools</span>
+                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Tailwind CSS</span>
                                 <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Figma</span>
-                            </div>
-                        </motion.div>
-                        {/* Other Projects Below */}
-                        <motion.div whileHover={{ y: -8, scale: 1.03 }} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
-                            <h3 className="text-xl font-bold mb-3 text-black">Consumer Behavior Analytics</h3>
-                            <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                                Engineered scalable data pipelines to process and analyze large-scale consumer datasets, uncovering critical purchasing patterns and market dynamics that informed strategic business decisions. Utilized extensive historical transactional data to develop robust sales forecasting models, experimenting with various machine learning algorithms to predict future demand with a 70% accuracy, enabling optimised inventory management and supply chain planning.
-                            </p>
-                            <div className="flex flex-wrap gap-2 mb-4">
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Python</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Scikit-learn</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Pandas</span>
-                            </div>
-                        </motion.div>
-                        <motion.div whileHover={{ y: -8, scale: 1.03 }} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
-                            <h3 className="text-xl font-bold mb-3 text-black">Generative & Transformer Models</h3>
-                            <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                                Tackled multiple complex generative challenges through research-intensive projects involving Variational Autoencoders (VAEs) and Diffusion Models, effectively leveraging their capabilities across multiple datasets to produce highly realistic and novel synthetic content and achieve superior performance in data representation. Optimized Vision Transformer models, specifically implementing DeiT-based architectures, to significantly reduce inference time by 20% and enable efficient performance on lower-resolution images, demonstrating proficiency in deploying high-performance vision transformers in resource-constrained environments.
-                            </p>
-                            <div className="flex flex-wrap gap-2 mb-4">
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">PyTorch</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">TensorFlow</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Keras</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Hugging Face Transformers</span>
-                            </div>
-                        </motion.div>
-                        <motion.div whileHover={{ y: -8, scale: 1.03 }} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
-                            <h3 className="text-xl font-bold mb-3 text-black">News Recommendation System</h3>
-                            <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                                Developed an end-to-end real-time pipeline to scrape and preprocess thousands of live news articles, leveraging BERT embeddings alongside other classification models for high-accuracy content classification and entity extraction. Engineered a scalable machine learning architecture for a personalized news recommendation engine, leveraging collaborative filtering and content-based methods. The best-performing model among tested approaches was utilized to filter relevant articles, demonstrating high effectiveness in identifying and surfacing relevant content.
-                            </p>
-                            <div className="flex flex-wrap gap-2 mb-4">
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Python</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">TensorFlow</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">PyTorch</span>
-                            </div>
-                        </motion.div>
-                        <motion.div whileHover={{ y: -8, scale: 1.03 }} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
-                            <h3 className="text-xl font-bold mb-3 text-black">Network-Centric Computing & Network Security</h3>
-                            <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                                Developed a scalable Distributed Hash Table (DHT) for decentralized systems with robust protocols for fault tolerance and data optimization; implemented secure OAuth 2.0 authentication and standards-compliant login systems to enhance web application security and prevent common vulnerabilities.
-                            </p>
-                            <div className="flex flex-wrap gap-2 mb-4">
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">OAuth 2.0</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">DHT</span>
-                                <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Security</span>
                             </div>
                         </motion.div>
                     </div>
@@ -236,7 +218,7 @@ const Home = () => {
             {/* Resume Section */}
             <motion.section
                 id="resume"
-                className="scroll-mt-24 py-20 px-4 md:px-8 lg:px-16 bg-white dark:bg-black"
+                className="scroll-mt-24 py-20 px-4 md:px-8 lg:px-16 bg-white"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
@@ -253,7 +235,7 @@ const Home = () => {
                             <div className="relative">
                                 {/* Timeline line */}
                                 <motion.div
-                                    className="absolute left-2.5 top-2 w-0.5 h-full bg-gray-200 dark:bg-gray-700 origin-top"
+                                    className="absolute left-2.5 top-2 w-0.5 h-full bg-gray-200 origin-top"
                                     initial={{ scaleY: 0 }}
                                     whileInView={{ scaleY: 1 }}
                                     viewport={{ once: true, amount: 0.1 }}
@@ -277,7 +259,7 @@ const Home = () => {
                                         >
                                             {/* Timeline dot */}
                                             <motion.div
-                                                className="absolute left-0 top-1 w-5 h-5 bg-orange-500 rounded-full border-4 border-white dark:border-black"
+                                                className="absolute left-0 top-1 w-5 h-5 bg-orange-500 rounded-full border-4 border-white"
                                                 initial={{ scale: 0 }}
                                                 whileInView={{ scale: 1 }}
                                                 viewport={{ once: true }}
@@ -285,7 +267,7 @@ const Home = () => {
                                             />
                                             <h4 className="text-xl font-semibold mb-1 text-black">{exp.title}</h4>
                                             <p className="text-orange-500 font-medium mb-2">{exp.company} • {exp.date}</p>
-                                            <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
+                                            <ul className="list-disc list-inside text-gray-600 space-y-2">
                                                 {exp.description.map((point, i) => (
                                                     <li key={i}>{point}</li>
                                                 ))}
@@ -303,20 +285,20 @@ const Home = () => {
                                 <div className="space-y-6">
                                     <div>
                                         <h5 className="font-semibold text-lg text-black">Lahore University of Management Sciences</h5>
-                                        <p className="text-gray-600 dark:text-gray-300">BSc. Computer Science</p>
+                                        <p className="text-gray-600">BSc. Computer Science</p>
                                         <p className="text-sm text-gray-500">May. 2026 | Lahore, Pakistan</p>
-                                        <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">Dean's Honor List</p>
+                                        <p className="text-sm text-gray-600 mt-2">Dean's Honor List</p>
                                     </div>
                                     <div>
                                         <h5 className="font-semibold text-black">Hertie School Germany</h5>
-                                        <p className="text-gray-600 dark:text-gray-300">Data Science Summer School</p>
+                                        <p className="text-gray-600">Data Science Summer School</p>
                                         <p className="text-sm text-gray-500">Aug. 2023 | Remote</p>
                                     </div>
                                     <div>
                                         <h5 className="font-semibold text-black">Cedar College</h5>
-                                        <p className="text-gray-600 dark:text-gray-300">A Levels, Cambridge International Examinations</p>
+                                        <p className="text-gray-600">A Levels, Cambridge International Examinations</p>
                                         <p className="text-sm text-gray-500">May. 2022 | Karachi, Pakistan</p>
-                                        <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">Merit Scholarship</p>
+                                        <p className="text-sm text-gray-600 mt-2">Merit Scholarship</p>
                                     </div>
                                 </div>
                             </div>
@@ -325,15 +307,19 @@ const Home = () => {
                                 <div className="space-y-2 text-left">
                                     <div>
                                         <span className="font-semibold text-black">Languages:</span>
-                                        <span className="text-gray-700 dark:text-gray-200"> C, C++, Python, TypeScript, HTML/CSS, Dart</span>
+                                        <span className="text-gray-700"> Java, JavaScript (Node.js), TypeScript, Python, C#, SQL, C/C++, HTML/CSS</span>
                                     </div>
                                     <div>
                                         <span className="font-semibold text-black">Frameworks:</span>
-                                        <span className="text-gray-700 dark:text-gray-200"> React, ExpressJs, PyTorch, TensorFlow, Keras</span>
+                                        <span className="text-gray-700"> Spring Boot, React, Node.js, ASP.NET Core, Django</span>
                                     </div>
                                     <div>
-                                        <span className="font-semibold text-black">Tools:</span>
-                                        <span className="text-gray-700 dark:text-gray-200"> Git, Docker, MongoDB, VS Code</span>
+                                        <span className="font-semibold text-black">Databases:</span>
+                                        <span className="text-gray-700"> MySQL, MongoDB, SQL Server, Redis</span>
+                                    </div>
+                                    <div>
+                                        <span className="font-semibold text-black">Tools & Practices:</span>
+                                        <span className="text-gray-700"> REST APIs, Microservices Architecture, OOP, Design Patterns, Agile, Git, Docker, CI/CD, Linux, SonarQube</span>
                                     </div>
                                 </div>
                             </div>
@@ -356,7 +342,7 @@ const Home = () => {
             {/* Detailed Contact Section */}
             <motion.section
                 id="contact"
-                className="scroll-mt-24 py-20 px-4 md:px-8 lg:px-16 bg-white dark:bg-black"
+                className="scroll-mt-24 py-20 px-4 md:px-8 lg:px-16 bg-white"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
@@ -369,7 +355,7 @@ const Home = () => {
                     <div className="grid lg:grid-cols-2 gap-16">
                         <div>
                             <h3 className="text-2xl font-bold mb-6 text-black">Let's Connect</h3>
-                            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                            <p className="text-lg text-gray-600 mb-8">
                                 I'm always interested in new opportunities, exciting projects, and meaningful collaborations.
                                 Whether you have a project in mind, want to discuss technology, or just want to say hello,
                                 I'd love to hear from you.
@@ -383,7 +369,7 @@ const Home = () => {
                                     </div>
                                     <div>
                                         <h4 className="font-semibold">Email</h4>
-                                        <p className="text-gray-600 dark:text-gray-300">salmanatwork1@gmail.com</p>
+                                        <p className="text-gray-600">salmanatwork1@gmail.com</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
@@ -395,7 +381,7 @@ const Home = () => {
                                     </div>
                                     <div>
                                         <h4 className="font-semibold">Location</h4>
-                                        <p className="text-gray-600 dark:text-gray-300">Lahore, Pakistan</p>
+                                        <p className="text-gray-600">Lahore, Pakistan</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
@@ -406,7 +392,7 @@ const Home = () => {
                                     </div>
                                     <div>
                                         <h4 className="font-semibold">Response Time</h4>
-                                        <p className="text-gray-600 dark:text-gray-300">Usually within 24 hours</p>
+                                        <p className="text-gray-600">Usually within 24 hours</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
@@ -417,15 +403,15 @@ const Home = () => {
                                     </div>
                                     <div>
                                         <h4 className="font-semibold">Phone</h4>
-                                        <p className="text-gray-600 dark:text-gray-300">+92 302 8225522</p>
+                                        <p className="text-gray-600">+92 302 8225522</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+                        <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
                             <h3 className="text-2xl font-bold mb-6 text-black">Connect With Me</h3>
                             <div className="space-y-4">
-                                <a href="https://www.linkedin.com/in/salman-ajmal/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 bg-white dark:bg-gray-700 rounded-lg hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all duration-300">
+                                <a href="https://www.linkedin.com/in/salman-ajmal/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 bg-white rounded-lg hover:bg-orange-50 transition-all duration-300">
                                     <div className="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center">
                                         <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -433,7 +419,7 @@ const Home = () => {
                                     </div>
                                     <div>
                                         <h4 className="font-semibold">LinkedIn</h4>
-                                        <p className="text-gray-600 dark:text-gray-300">salman-ajmal</p>
+                                        <p className="text-gray-600">salman-ajmal</p>
                                     </div>
                                 </a>
                             </div>

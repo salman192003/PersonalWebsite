@@ -35,49 +35,49 @@ const HomeMobile = () => {
 
     const projects = [
         {
-            title: "EmCon Medical Platform",
-            description: "Full-stack multi-hospital system with predictive ML models for wait time estimation (90%+ accuracy)",
-            tech: ["React", "Node.js", "MongoDB", "PyTorch"],
+            title: "Algnosis – AI Diagnosis Platform",
+            description: "AI-driven diagnosis platform for multi-modal medical data (MRI, CT, blood reports) using computer vision models with up to 30% higher accuracy after retraining.",
+            tech: ["Java Spring Boot", "MongoDB", "React", "PyTorch"],
             gradient: "from-purple-500 to-pink-500"
         },
         {
-            title: "FinTrack App",
-            description: "Cross-platform personal finance app with smart budgeting engine and real-time tracking",
-            tech: ["React", "Flutter", "Figma"],
+            title: "EmCon – Multi-Hospital Management",
+            description: "Multi-hospital patient management system with JWT-based role access control, centralized data access, and 12-week Agile sprint delivery.",
+            tech: ["Node.js", "MongoDB", "Express", "JWT"],
             gradient: "from-blue-500 to-cyan-500"
         },
         {
-            title: "News Recommendation System",
-            description: "Real-time pipeline with BERT embeddings for content classification and personalized recommendations",
-            tech: ["Python", "BERT", "TensorFlow"],
+            title: "Taskly – Task Management System",
+            description: "Enterprise-grade task management system with role-based access, concurrent multi-user support, and 25% latency reduction through query optimization and caching.",
+            tech: ["ASP.NET Core", "React", "xUnit", "SonarQube"],
             gradient: "from-orange-500 to-red-500"
         },
         {
-            title: "Generative & Transformer Models",
-            description: "VAEs, Diffusion Models, and optimized Vision Transformers achieving 20% faster inference",
-            tech: ["PyTorch", "TensorFlow", "Hugging Face"],
+            title: "FinTrack – Student Expense Tracker",
+            description: "Student expense tracking app with Figma wireframes, user-centered design, dynamic React components, and responsive Tailwind CSS layouts.",
+            tech: ["React", "Tailwind CSS", "Figma"],
             gradient: "from-blue-500 to-purple-500"
         }
     ];
 
     const researchItems = [
         {
-            title: "Research Intern",
-            company: "Computer Vision & Graphics Lab | LUMS",
-            date: "May 2025 - Present",
-            description: "Designed ViT-based IRKD model with knowledge distillation achieving 40% reduction in training time"
+            title: "Full Stack Development Intern",
+            company: "10Pearls Pakistan",
+            date: "Dec. 2025 – Feb. 2026",
+            description: "Engineered a multi-tenant SaaS task management platform with ASP.NET Core and React; achieved 85% test coverage via CI/CD with xUnit and SonarQube."
         },
         {
-            title: "Professional Fellowship",
-            company: "Dev Weekends - Software Engineering",
-            date: "Jun 2025 - Present",
-            description: "12 intensive workshops on advanced DSA, system design, and scalable backend systems"
+            title: "Software Development Intern",
+            company: "Netsol Technologies Ltd.",
+            date: "Jul 2025 – Aug 2025",
+            description: "Architected Java Spring Boot microservices, optimized computer vision models with a Django inference pipeline, and presented to senior leadership from 10 teams."
         },
         {
-            title: "Teaching Assistant",
-            company: "Digital Logic Circuit & Design | LUMS",
-            date: "Jan 2025 - May 2025",
-            description: "Led weekly labs for 120+ students, mentored 10+ advanced projects on circuit simulation"
+            title: "Teaching Assistant, Algorithms",
+            company: "Lahore University of Management Sciences",
+            date: "Aug 2025 – Dec 2025",
+            description: "Designed assessments for 300+ student DSA course and conducted weekly office hours to strengthen student understanding of advanced algorithms."
         }
     ];
 
@@ -208,7 +208,7 @@ const HomeMobile = () => {
                         <div className="mb-4">
                             <h3 className="text-sm font-semibold text-orange-500 mb-3">Languages</h3>
                             <div className="flex flex-wrap gap-2">
-                                {['Python', 'C++', 'C', 'TypeScript', 'JavaScript', 'HTML/CSS', 'Dart'].map((skill, i) => (
+                                {['Java', 'JavaScript (Node.js)', 'TypeScript', 'Python', 'C#', 'SQL', 'C/C++', 'HTML/CSS'].map((skill, i) => (
                                     <span
                                         key={i}
                                         className="px-4 py-2 glass-card text-white text-sm font-medium"
@@ -221,7 +221,7 @@ const HomeMobile = () => {
                         <div className="mb-4">
                             <h3 className="text-sm font-semibold text-orange-500 mb-3">Frameworks & Tools</h3>
                             <div className="flex flex-wrap gap-2">
-                                {['React', 'Express.js', 'PyTorch', 'TensorFlow', 'Keras', 'Flutter', 'Git', 'Docker', 'MongoDB'].map((skill, i) => (
+                                {['Spring Boot', 'React', 'Node.js', 'ASP.NET Core', 'Django', 'Git', 'Docker', 'MongoDB', 'SQL Server', 'Redis'].map((skill, i) => (
                                     <span
                                         key={i}
                                         className="px-4 py-2 glass-card text-white text-sm font-medium"

@@ -15,7 +15,7 @@ export const ThemeContext = createContext({
 });
 
 function App() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
