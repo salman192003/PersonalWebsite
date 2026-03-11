@@ -1,13 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import HomeMobile from './components/HomeMobile';
-import About from './components/About';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Resume from './components/Resume';
-import Footer from './components/Footer';
+import { BrowserRouter as Router } from 'react-router-dom';
+import SettingsHome from './components/SettingsHome';
 
 export const ThemeContext = createContext({
   theme: 'dark',
@@ -15,14 +8,22 @@ export const ThemeContext = createContext({
 });
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(() => {
+    // Check localStorage first, then system preference
+    const saved = localStorage.getItem('ios-portfolio-theme');
+    if (saved) return saved;
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  });
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 1024);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -31,8 +32,10 @@ function App() {
   useEffect(() => {
     document.documentElement.classList.remove('light', 'dark');
     document.documentElement.classList.add(theme);
-    // Set background color based on theme
-    document.body.style.backgroundColor = theme === 'dark' ? '#000000' : '#ffffff';
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.style.backgroundColor = theme === 'dark' ? '#000000' : '#F2F2F7';
+    // Save to localStorage
+    localStorage.setItem('ios-portfolio-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
@@ -41,30 +44,21 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <Router>
         {isMobile ? (
-          // Mobile-only experience
-          <div className="min-h-screen bg-black">
-            <Routes>
-              <Route path="/" element={<HomeMobile />} />
-              <Route path="/about" element={<HomeMobile />} />
-              <Route path="/projects" element={<HomeMobile />} />
-              <Route path="/contact" element={<HomeMobile />} />
-              <Route path="/resume" element={<HomeMobile />} />
-            </Routes>
+          // Mobile/Tablet: iOS Settings experience
+          <div className={`ios-app-container ${theme}`}>
+            <SettingsHome />
           </div>
         ) : (
-          // Desktop experience
-          <div className={`min-h-screen transition-colors duration-500 ${theme === 'dark' ? 'bg-black' : 'bg-white'}`}>
-            <Navbar />
-            <main className={`${theme === 'dark' ? 'bg-black' : 'bg-white'}`}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/resume" element={<Resume />} />
-              </Routes>
-            </main>
-            <Footer />
+          // Desktop: Show iOS Settings in a phone frame, centered
+          <div className={`desktop-container ${theme}`}>
+            <div className="desktop-phone-frame">
+              <SettingsHome />
+            </div>
+            {/* Desktop background branding */}
+            <div className="desktop-branding">
+              <h2 className="desktop-brand-name">Salman Ajmal</h2>
+              <p className="desktop-brand-sub">Portfolio</p>
+            </div>
           </div>
         )}
       </Router>

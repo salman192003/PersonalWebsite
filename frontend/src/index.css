@@ -2,369 +2,1669 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   iOS SETTINGS PORTFOLIO — Design System
+   ============================================================ */
+
+/* ── System Font ── */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* SF Pro Display fallback */
-@supports (font: -apple-system-body) {
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
-  }
+/* ── CSS Variables: Dark Theme (default) ── */
+:root,
+[data-theme="dark"] {
+  /* iOS System Colors */
+  --ios-bg: #000000;
+  --ios-secondary-bg: #1C1C1E;
+  --ios-tertiary-bg: #2C2C2E;
+  --ios-grouped-bg: #000000;
+  --ios-grouped-secondary-bg: #1C1C1E;
+
+  /* Labels */
+  --ios-label: #FFFFFF;
+  --ios-secondary-label: #8E8E93;
+  --ios-tertiary-label: #48484A;
+  --ios-quaternary-label: #3A3A3C;
+
+  /* Separators */
+  --ios-separator: rgba(84, 84, 88, 0.65);
+  --ios-opaque-separator: #38383A;
+
+  /* System fills */
+  --ios-fill: rgba(120, 120, 128, 0.36);
+  --ios-secondary-fill: rgba(120, 120, 128, 0.32);
+  --ios-tertiary-fill: rgba(120, 120, 128, 0.24);
+  --ios-quaternary-fill: rgba(120, 120, 128, 0.18);
+
+  /* Accent */
+  --ios-blue: #0A84FF;
+  --ios-green: #30D158;
+  --ios-red: #FF453A;
+  --ios-orange: #FF9F0A;
+
+  /* Settings specific */
+  --ios-row-bg: #1C1C1E;
+  --ios-row-active: rgba(120, 120, 128, 0.2);
+  --ios-chevron: rgba(199, 199, 204, 0.35);
+  --ios-toggle-off: rgba(120, 120, 128, 0.32);
+  --ios-group-label: #8E8E93;
+  --ios-search-bg: rgba(118, 118, 128, 0.24);
+
+  /* Section views */
+  --section-bg: #000000;
+
+  /* Desktop */
+  --desktop-bg: #1a1a2e;
 }
 
-:root {
-  --mac-black: #000000;
-  --mac-white: #ffffff;
-  --mac-grey: #333333;
-  --mac-light: #666666;
-  --mac-accent: #ff3e3e;
-  --mac-window-bg: rgba(0, 0, 0, 0.85);
-  --mac-title-bar: rgba(51, 51, 51, 0.95);
-  --mac-border: rgba(255, 62, 62, 0.3);
-  --mac-bg: #1a1a1a;
-  --mac-text: #ffffff;
-  --mac-button-red: #ff5f57;
-  --mac-button-yellow: #febc2e;
-  --mac-button-green: #28c840;
+/* ── CSS Variables: Light Theme ── */
+[data-theme="light"] {
+  --ios-bg: #F2F2F7;
+  --ios-secondary-bg: #FFFFFF;
+  --ios-tertiary-bg: #F2F2F7;
+  --ios-grouped-bg: #F2F2F7;
+  --ios-grouped-secondary-bg: #FFFFFF;
+
+  --ios-label: #000000;
+  --ios-secondary-label: #3C3C43;
+  --ios-tertiary-label: #C7C7CC;
+  --ios-quaternary-label: #D1D1D6;
+
+  --ios-separator: rgba(60, 60, 67, 0.29);
+  --ios-opaque-separator: #C6C6C8;
+
+  --ios-fill: rgba(120, 120, 128, 0.2);
+  --ios-secondary-fill: rgba(120, 120, 128, 0.16);
+  --ios-tertiary-fill: rgba(120, 120, 128, 0.12);
+  --ios-quaternary-fill: rgba(120, 120, 128, 0.08);
+
+  --ios-blue: #007AFF;
+  --ios-green: #34C759;
+  --ios-red: #FF3B30;
+  --ios-orange: #FF9500;
+
+  --ios-row-bg: #FFFFFF;
+  --ios-row-active: rgba(0, 0, 0, 0.05);
+  --ios-chevron: rgba(60, 60, 67, 0.3);
+  --ios-toggle-off: rgba(120, 120, 128, 0.16);
+  --ios-group-label: #6D6D72;
+  --ios-search-bg: rgba(118, 118, 128, 0.12);
+
+  --section-bg: #F2F2F7;
+  --desktop-bg: #e8e8f0;
 }
 
-/* Base styles */
-body {
+/* ── Base Reset ── */
+* {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+    'Inter', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--mac-bg);
-  color: var(--mac-text);
+  background-color: var(--ios-bg);
+  color: var(--ios-label);
   overflow-x: hidden;
-  padding: 0;
   min-height: 100vh;
-  background-image:
-    linear-gradient(to bottom,
-      rgba(255, 255, 255, 0.03) 1px,
-      transparent 1px),
-    linear-gradient(to right,
-      rgba(255, 255, 255, 0.03) 1px,
-      transparent 1px);
-  background-size: 20px 20px;
-  background-position: center center;
-  position: relative;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center,
-      rgba(255, 255, 255, 0.05) 0%,
-      transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
+/* Remove all old styles — body pseudo-elements, grid backgrounds etc */
+body::before,
 body::after {
+  display: none;
+}
+
+/* ============================================================
+   iOS App Container (Mobile/Tablet)
+   ============================================================ */
+.ios-app-container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--ios-bg);
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.4s ease;
+}
+
+/* ============================================================
+   Desktop Container — phone frame centered
+   ============================================================ */
+.desktop-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--desktop-bg);
+  transition: background-color 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.desktop-container::before {
   content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg,
-      rgba(255, 255, 255, 0.02) 0%,
-      transparent 20%,
-      transparent 80%,
-      rgba(255, 255, 255, 0.02) 100%);
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0, 122, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(175, 82, 222, 0.05) 0%, transparent 50%);
   pointer-events: none;
-  z-index: 0;
 }
 
-/* Minimal styles */
-.minimal-text {
-  text-shadow:
-    0 0 5px var(--mac-light),
-    0 0 10px var(--mac-light);
-}
-
-.minimal-button {
-  position: relative;
-  padding: 0.75rem 1.5rem;
-  background: transparent;
-  border: 1px solid var(--mac-light);
-  color: var(--mac-white);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  border-radius: 30px;
+.desktop-phone-frame {
+  width: 393px;
+  height: 852px;
+  border-radius: 50px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  position: relative;
+  background: var(--ios-bg);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 0 0 12px #1a1a1a,
+    0 0 0 14px rgba(255, 255, 255, 0.1);
+  transition: background-color 0.4s ease;
 }
 
-.minimal-button::before {
-  content: '';
+[data-theme="light"] .desktop-phone-frame {
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.05),
+    0 20px 60px rgba(0, 0, 0, 0.15),
+    0 0 0 12px #2c2c2e,
+    0 0 0 14px rgba(0, 0, 0, 0.1);
+}
+
+/* Desktop branding */
+.desktop-branding {
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
+  bottom: 48px;
+  right: 48px;
+  text-align: right;
+  pointer-events: none;
+}
+
+.desktop-brand-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ios-label);
+  opacity: 0.15;
+  letter-spacing: -0.02em;
+}
+
+.desktop-brand-sub {
+  font-size: 13px;
+  color: var(--ios-secondary-label);
+  opacity: 0.15;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   Settings App
+   ============================================================ */
+.settings-app {
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
+  overflow: hidden;
+  background: var(--ios-grouped-bg);
+  transition: background-color 0.4s ease;
+}
+
+.desktop-phone-frame .settings-app {
   height: 100%;
-  background: linear-gradient(90deg,
-      transparent,
-      rgba(102, 102, 102, 0.1),
-      transparent);
-  transition: 0.5s;
 }
 
-.minimal-button:hover::before {
-  left: 100%;
-}
-
-.minimal-button:hover {
-  background: var(--mac-light);
-  color: var(--mac-black);
-  box-shadow: 0 0 20px var(--mac-light);
-  transform: translateY(-2px);
-}
-
-.minimal-nav {
-  background: transparent;
-}
-
-.minimal-nav-link {
-  position: relative;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.minimal-nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--mac-light);
-  transition: width 0.3s ease;
-}
-
-.minimal-nav-link:hover::after {
-  width: 100%;
-}
-
-/* Mac window styles */
-.mac-window {
-  background: var(--mac-window-bg);
-  border: 1px solid var(--mac-border);
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+/* ── Settings Home ── */
+.settings-home {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
 }
 
-.mac-window.dragging {
-  transform: scale(1.02);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-}
-
-.mac-window-header {
-  background: var(--mac-title-bar);
-  padding: 8px 12px;
+/* ── iOS Status Bar ── */
+.ios-status-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--mac-border);
-  cursor: move;
+  padding: 14px 24px 8px;
+  flex-shrink: 0;
 }
 
-.mac-window-header:active {
-  cursor: grabbing;
+.ios-time {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ios-label);
 }
 
-.mac-window-buttons {
+.ios-status-icons {
   display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ios-battery {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.ios-battery-body {
+  width: 25px;
+  height: 11px;
+  border: 1.5px solid var(--ios-label);
+  border-radius: 3px;
+  padding: 1.5px;
+  position: relative;
+}
+
+.ios-battery-level {
+  height: 100%;
+  background: var(--ios-label);
+  border-radius: 1px;
+}
+
+.ios-battery-cap {
+  width: 2px;
+  height: 5px;
+  background: var(--ios-label);
+  border-radius: 0 1px 1px 0;
+  opacity: 0.5;
+}
+
+/* ── Settings Large Title ── */
+.settings-title-area {
+  padding: 8px 20px 8px;
+  flex-shrink: 0;
+}
+
+.settings-large-title {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--ios-label);
+  line-height: 1.15;
+}
+
+/* ── Scrollable Content ── */
+.settings-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 16px 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.settings-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================================
+   Settings Group
+   ============================================================ */
+.settings-group-wrapper {
+  margin-bottom: 22px;
+}
+
+.settings-group-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ios-group-label);
+  padding: 0 16px 7px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.settings-group {
+  background: var(--ios-grouped-secondary-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: background-color 0.4s ease;
+}
+
+/* ============================================================
+   Settings Row
+   ============================================================ */
+.settings-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 16px 8px 12px;
+  min-height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background-color 0.15s ease;
+  outline: none;
+}
+
+.settings-row:active {
+  background-color: var(--ios-row-active);
+}
+
+.settings-row-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+
+.settings-row-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 10px 0;
+}
+
+.settings-row-separator {
+  border-bottom: 0.5px solid var(--ios-separator);
+}
+
+.settings-row-label {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+}
+
+.settings-row-right {
+  display: flex;
+  align-items: center;
   gap: 8px;
 }
 
-.mac-window-button {
+.settings-row-value {
+  font-size: 17px;
+  color: var(--ios-secondary-label);
+  letter-spacing: -0.01em;
+}
+
+.settings-row-badge {
+  min-width: 22px;
+  height: 22px;
+  border-radius: 11px;
+  background: #FF3B30;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 7px;
+}
+
+.settings-row-chevron {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+/* ============================================================
+   Profile Card
+   ============================================================ */
+.profile-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px 12px 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  outline: none;
+  transition: background-color 0.15s ease;
+}
+
+.profile-card:active {
+  background-color: var(--ios-row-active);
+}
+
+.profile-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 14px;
+  flex-shrink: 0;
+  background: var(--ios-tertiary-bg);
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.profile-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.profile-subtitle {
+  font-size: 13px;
+  color: var(--ios-secondary-label);
+  margin-top: 2px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   Highlight Card (Software Update style)
+   ============================================================ */
+.highlight-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 14px 16px 14px 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  outline: none;
+  transition: background-color 0.15s ease;
+}
+
+.highlight-card:active {
+  background-color: var(--ios-row-active);
+}
+
+.highlight-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight-title {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+}
+
+.highlight-subtitle {
+  font-size: 13px;
+  color: var(--ios-secondary-label);
+  margin-top: 2px;
+}
+
+.highlight-badge {
+  min-width: 22px;
+  height: 22px;
+  border-radius: 11px;
+  background: #FF3B30;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  margin-right: 8px;
+}
+
+/* ============================================================
+   Section View (Detail Screen)
+   ============================================================ */
+.section-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--ios-grouped-bg);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.4s ease;
+}
+
+.section-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 54px 8px 10px;
+  background: var(--ios-grouped-secondary-bg);
+  border-bottom: 0.5px solid var(--ios-separator);
+  flex-shrink: 0;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.section-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  font-size: 17px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 8px;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+  outline: none;
+}
+
+.section-nav-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.section-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 16px 40px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.section-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================================
+   BIO SECTION — Soft neutral / elegant grayscale
+   ============================================================ */
+.bio-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bio-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0 12px;
+}
+
+.bio-avatar-large {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: var(--ios-tertiary-bg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.bio-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bio-name {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ios-label);
+  letter-spacing: -0.02em;
+}
+
+.bio-intro {
+  font-size: 15px;
+  color: var(--ios-secondary-label);
+  margin-top: 4px;
+  text-align: center;
+}
+
+.bio-card {
+  background: var(--ios-grouped-secondary-bg);
+  border-radius: 12px;
+  padding: 16px;
+  transition: background-color 0.4s ease;
+}
+
+.bio-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.bio-card-icon {
+  font-size: 16px;
+}
+
+.bio-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+}
+
+.bio-card-text {
+  font-size: 15px;
+  color: var(--ios-secondary-label);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+}
+
+.bio-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bio-pill {
+  padding: 6px 14px;
+  background: var(--ios-tertiary-fill);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+}
+
+.bio-status-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.bio-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #30D158;
+  margin-top: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(48, 209, 88, 0.4);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 8px rgba(48, 209, 88, 0.4); }
+  50% { box-shadow: 0 0 16px rgba(48, 209, 88, 0.6); }
+}
+
+.bio-info-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  text-decoration: none;
+}
+
+.bio-info-link {
+  cursor: pointer;
+}
+
+.bio-info-link:hover .bio-info-text {
+  color: var(--ios-blue);
+}
+
+.bio-info-icon {
+  font-size: 16px;
+  width: 24px;
+  text-align: center;
+}
+
+.bio-info-text {
+  font-size: 15px;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.bio-separator {
+  height: 0.5px;
+  background: var(--ios-separator);
+  margin-left: 34px;
+}
+
+.bio-external {
+  margin-left: auto;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   SKILLS SECTION — Cool blue / cyan / glassy tech feel
+   ============================================================ */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skills-category {
+  background: var(--ios-grouped-secondary-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: background-color 0.4s ease;
+}
+
+.skills-category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  outline: none;
+  transition: background-color 0.15s ease;
+}
+
+.skills-category-header:active {
+  background-color: var(--ios-row-active);
+}
+
+.skills-category-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skills-category-icon {
+  font-size: 18px;
+}
+
+.skills-category-name {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+}
+
+.skills-list {
+  overflow: hidden;
+  padding: 0 16px 12px;
+}
+
+.skill-item {
+  padding: 8px 0;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.skill-name {
+  font-size: 15px;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+}
+
+.skill-level-text {
+  font-size: 13px;
+  color: var(--ios-secondary-label);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.skill-bar-bg {
+  height: 6px;
+  background: var(--ios-quaternary-fill);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+
+/* All pills overview */
+.skills-all-pills {
+  background: var(--ios-grouped-secondary-bg);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 4px;
+  transition: background-color 0.4s ease;
+}
+
+.skills-pills-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ios-secondary-label);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+
+.skills-pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skills-pill {
+  padding: 5px 12px;
+  background: rgba(0, 122, 255, 0.1);
+  border: 1px solid rgba(0, 122, 255, 0.2);
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ios-blue);
+  letter-spacing: -0.01em;
+  cursor: default;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+[data-theme="light"] .skills-pill {
+  background: rgba(0, 122, 255, 0.08);
+  border-color: rgba(0, 122, 255, 0.15);
+}
+
+/* ============================================================
+   EDUCATION SECTION — Warm academic cream / gold tones
+   ============================================================ */
+.education-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.edu-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.edu-card {
+  display: flex;
+  gap: 16px;
+}
+
+.edu-timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+  flex-shrink: 0;
+}
+
+.edu-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
+  background: #C7A44A;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(199, 164, 74, 0.3);
+}
+
+.edu-line {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(180deg, #C7A44A 0%, var(--ios-quaternary-fill) 100%);
+  margin: 4px 0;
+}
+
+.edu-content {
+  flex: 1;
+  background: var(--ios-grouped-secondary-bg);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: background-color 0.4s ease;
+}
+
+.edu-institution {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.edu-degree {
+  font-size: 15px;
+  color: #C7A44A;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.edu-dates {
+  font-size: 13px;
+  color: var(--ios-secondary-label);
+  margin-top: 4px;
+}
+
+.edu-location {
+  font-size: 13px;
+  color: var(--ios-tertiary-label);
+  margin-top: 2px;
+}
+
+.edu-achievements {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.edu-achievement-badge {
+  font-size: 13px;
+  font-weight: 500;
+  color: #C7A44A;
+  background: rgba(199, 164, 74, 0.12);
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.edu-coursework {
+  margin-top: 12px;
+}
+
+.edu-coursework-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ios-secondary-label);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.edu-coursework-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.edu-course-pill {
+  padding: 4px 10px;
+  background: var(--ios-quaternary-fill);
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ios-label);
+}
+
+.edu-activities {
+  margin-top: 10px;
+}
+
+.edu-activity {
+  font-size: 14px;
+  color: var(--ios-secondary-label);
+}
+
+/* ============================================================
+   PROJECTS SECTION — Vibrant gradient-accented product showcase
+   ============================================================ */
+.projects-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-card {
+  background: var(--ios-grouped-secondary-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: background-color 0.4s ease;
+}
+
+.project-accent-bar {
+  height: 4px;
+  width: 100%;
+}
+
+.project-card-content {
+  width: 100%;
+  padding: 16px;
+  background: transparent;
   border: none;
   cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease;
+  text-align: left;
+  font-family: inherit;
+  outline: none;
+  transition: background-color 0.15s ease;
 }
 
-.mac-window-button::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: transparent;
-  transition: all 0.2s ease;
+.project-card-content:active {
+  background-color: var(--ios-row-active);
 }
 
-.mac-window-button.close {
-  background: var(--mac-button-red);
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
 }
 
-.mac-window-button.close:hover::before {
-  background: rgba(0, 0, 0, 0.3);
+.project-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
 }
 
-.mac-window-button.minimize {
-  background: var(--mac-button-yellow);
+.project-summary {
+  font-size: 14px;
+  color: var(--ios-secondary-label);
+  margin-top: 6px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
 }
 
-.mac-window-button.minimize:hover::before {
-  background: rgba(0, 0, 0, 0.3);
+.project-details {
+  overflow: hidden;
+  padding: 0 16px 16px;
 }
 
-.mac-window-button.maximize {
-  background: var(--mac-button-green);
+.project-impact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--ios-quaternary-fill);
+  border-radius: 10px;
+  margin-bottom: 12px;
 }
 
-.mac-window-button.maximize:hover::before {
-  background: rgba(0, 0, 0, 0.3);
+.project-impact-icon {
+  font-size: 16px;
 }
 
-.mac-window-title {
+.project-impact-text {
   font-size: 14px;
   font-weight: 500;
-  color: var(--mac-text);
-  flex: 1;
-  text-align: center;
-  margin: 0 12px;
+  color: var(--ios-label);
 }
 
-.mac-window-content {
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-tech-pill {
+  padding: 4px 12px;
+  border: 1px solid;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  background: transparent;
+}
+
+/* ============================================================
+   RESEARCH SECTION — Deep indigo / purple / analytical
+   ============================================================ */
+.research-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.research-card {
+  background: var(--ios-grouped-secondary-bg);
+  border-radius: 12px;
   padding: 16px;
-  color: var(--mac-text);
+  border-left: 3px solid #5856D6;
+  transition: background-color 0.4s ease;
 }
 
-.mac-icon {
-  display: inline-flex;
+.research-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.research-icon-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(88, 86, 214, 0.15);
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  font-size: 16px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
 }
 
-/* Scrollbar styles */
-::-webkit-scrollbar {
-  width: 8px;
+.research-icon {
+  font-size: 20px;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--mac-light);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--mac-accent);
-}
-
-/* Mac window animations */
-.mac-window-open {
-  animation: windowOpen 0.5s ease-out;
-}
-
-@keyframes windowOpen {
-  0% {
-    opacity: 0;
-    transform: scale(0.8) translateY(20px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-/* iOS-inspired Mobile Glassmorphic Styles */
-.glass-pill {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  border-radius: 24px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glass-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-/* SF Pro Display Typography */
-.sf-display {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
-  font-feature-settings: 'ss01' on, 'ss02' on;
-  letter-spacing: -0.02em;
-}
-
-.sf-display-large {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-  font-weight: 700;
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-}
-
-.sf-display-medium {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+.research-role {
+  font-size: 17px;
   font-weight: 600;
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  line-height: 1.2;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+}
+
+.research-lab {
+  font-size: 14px;
+  color: #5856D6;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.research-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 0.5px solid var(--ios-separator);
+}
+
+.research-area-label {
+  font-size: 13px;
+  color: var(--ios-secondary-label);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+.research-area-value {
+  font-size: 14px;
+  color: var(--ios-label);
+  font-weight: 500;
+}
+
+.research-duration {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0 12px;
+}
+
+.research-duration-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #30D158;
+  box-shadow: 0 0 6px rgba(48, 209, 88, 0.4);
+}
+
+.research-duration-text {
+  font-size: 14px;
+  color: var(--ios-secondary-label);
+  font-weight: 500;
+}
+
+.research-contributions {
+  border-top: 0.5px solid var(--ios-separator);
+  padding-top: 12px;
+}
+
+.research-contributions-label {
+  font-size: 13px;
+  color: var(--ios-secondary-label);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.research-contributions-list {
+  list-style: none;
+  padding: 0;
+}
+
+.research-contribution-item {
+  font-size: 14px;
+  color: var(--ios-label);
+  line-height: 1.5;
+  padding: 5px 0;
+  padding-left: 14px;
+  position: relative;
+  letter-spacing: -0.01em;
+}
+
+.research-contribution-item::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #5856D6;
+}
+
+.research-outcomes {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.research-outcome-badge {
+  font-size: 13px;
+  font-weight: 500;
+  color: #5856D6;
+  background: rgba(88, 86, 214, 0.12);
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+/* ============================================================
+   EXPERIENCE SECTION — Refined graphite / steel / executive
+   ============================================================ */
+.experience-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.exp-card {
+  background: var(--ios-grouped-secondary-bg);
+  border-radius: 12px;
+  padding: 16px;
+  transition: background-color 0.4s ease;
+}
+
+.exp-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.exp-company-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #48484A 0%, #636366 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.exp-header-text {
+  flex: 1;
+}
+
+.exp-role {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.exp-company {
+  font-size: 14px;
+  color: var(--ios-secondary-label);
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.exp-duration {
+  font-size: 13px;
+  color: var(--ios-tertiary-label);
+  margin-top: 2px;
+}
+
+.exp-achievements {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+  border-top: 0.5px solid var(--ios-separator);
+  padding-top: 12px;
+}
+
+.exp-achievement {
+  font-size: 14px;
+  color: var(--ios-label);
+  line-height: 1.5;
+  padding: 4px 0;
+  display: flex;
+  gap: 6px;
+  letter-spacing: -0.01em;
+}
+
+.exp-bullet {
+  color: #636366;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.exp-impact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: var(--ios-quaternary-fill);
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.exp-impact-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ios-secondary-label);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.exp-impact-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ios-label);
+}
+
+.exp-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.exp-tool-pill {
+  padding: 4px 10px;
+  background: var(--ios-quaternary-fill);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ios-secondary-label);
+}
+
+/* ============================================================
+   CONTACT SECTION — Fresh, approachable accent palette
+   ============================================================ */
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-hero {
+  text-align: center;
+  padding: 20px 0 8px;
+}
+
+.contact-wave {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.contact-hero-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ios-label);
   letter-spacing: -0.02em;
 }
 
-/* Mobile-first animations */
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+.contact-hero-text {
+  font-size: 15px;
+  color: var(--ios-secondary-label);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.contact-list {
+  background: var(--ios-grouped-secondary-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: background-color 0.4s ease;
+}
+
+.contact-item {
+  position: relative;
+}
+
+.contact-item-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  text-decoration: none;
+  width: 100%;
+  transition: background-color 0.15s ease;
+}
+
+.contact-item-inner:active {
+  background-color: var(--ios-row-active);
+}
+
+.contact-item-icon {
+  font-size: 20px;
+  width: 32px;
+  text-align: center;
+}
+
+.contact-item-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-item-label {
+  font-size: 12px;
+  color: var(--ios-secondary-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.contact-item-value {
+  font-size: 16px;
+  color: var(--ios-label);
+  font-weight: 500;
+  margin-top: 1px;
+  letter-spacing: -0.01em;
+}
+
+.contact-external {
+  opacity: 0.4;
+}
+
+.contact-separator {
+  height: 0.5px;
+  background: var(--ios-separator);
+  margin-left: 60px;
+}
+
+.contact-copy-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--ios-quaternary-fill);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  outline: none;
+}
+
+.contact-copied {
+  color: #30D158;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* ============================================================
+   RESUME SECTION — Clean minimal monochrome
+   ============================================================ */
+.resume-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.resume-summary-card,
+.resume-highlights-card {
+  background: var(--ios-grouped-secondary-bg);
+  border-radius: 12px;
+  padding: 16px;
+  transition: background-color 0.4s ease;
+}
+
+.resume-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ios-secondary-label);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+
+.resume-summary-text {
+  font-size: 15px;
+  color: var(--ios-label);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+}
+
+.resume-highlights-list {
+  list-style: none;
+  padding: 0;
+}
+
+.resume-highlight {
+  font-size: 14px;
+  color: var(--ios-label);
+  line-height: 1.5;
+  padding: 5px 0;
+  display: flex;
+  gap: 6px;
+  letter-spacing: -0.01em;
+}
+
+.resume-highlight-bullet {
+  color: var(--ios-blue);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.resume-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resume-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+  outline: none;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.resume-btn:active {
+  transform: scale(0.97);
+}
+
+.resume-btn-primary {
+  background: var(--ios-blue);
+  color: white;
+}
+
+.resume-btn-secondary {
+  background: var(--ios-quaternary-fill);
+  color: var(--ios-label);
+}
+
+.resume-preview {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.resume-iframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+  border-radius: 12px;
+  background: var(--ios-grouped-secondary-bg);
+}
+
+/* ============================================================
+   Scrollbar — Hidden for iOS feel
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* ============================================================
+   Global Transitions for theme changes
+   ============================================================ */
+.settings-group,
+.bio-card,
+.skills-category,
+.skills-all-pills,
+.edu-content,
+.project-card,
+.research-card,
+.exp-card,
+.contact-list,
+.resume-summary-card,
+.resume-highlights-card {
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   Responsive — Desktop adjustments
+   ============================================================ */
+@media (min-width: 1025px) {
+  /* Desktop uses phone frame, no changes needed */
+}
+
+/* Tablet: slightly wider phone frame feel */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ios-app-container {
+    display: flex;
+    justify-content: center;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-.animate-slide-in-up {
-  animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Mobile specific padding bottom for nav */
-@media (max-width: 768px) {
-  .mobile-content {
-    padding-bottom: 100px;
+  .settings-app {
+    max-width: 500px;
+    width: 100%;
   }
 }

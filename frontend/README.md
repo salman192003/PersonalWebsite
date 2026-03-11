@@ -1,46 +1,121 @@
-# Getting Started with Create React App
+# iOS Settings Portfolio — Salman Ajmal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A polished, mobile-first portfolio website inspired by Apple's iOS Settings app design language. Built with React, TypeScript, Tailwind CSS, and Framer Motion.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- 📱 **iOS Settings Homepage** — Large title, profile card, grouped section rows, chevrons, badges
+- 🌗 **Dark / Light Mode Toggle** — iOS-style switch with smooth theme transition, persists in localStorage
+- 🎯 **Section Detail Views** — Each section slides in like an iOS push navigation
+- 💫 **Premium Animations** — Spring-based transitions, staggered reveals, micro-interactions
+- 📱 **Mobile-first + Desktop Phone Frame** — On mobile/tablet, it fills the viewport. On desktop, it's presented in a realistic iPhone frame
+- 🎨 **Section-specific Theming** — Each section has its own color personality while remaining cohesive
 
-### `npm start`
+## 🏗️ Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+src/
+├── App.tsx                    # Main app with theme provider + responsive layout
+├── index.css                  # Complete iOS design system (CSS variables)
+├── data/
+│   └── portfolioData.ts       # ← EDIT THIS to update all your content
+├── components/
+│   ├── SettingsHome.tsx        # Main settings screen orchestrator
+│   ├── ios/
+│   │   ├── IOSToggle.tsx       # iOS-style animated toggle switch
+│   │   ├── SettingsRow.tsx     # Reusable settings row with icon/label/value/chevron
+│   │   ├── SettingsGroup.tsx   # Grouped card container
+│   │   └── SectionView.tsx     # Detail screen with back navigation
+│   └── sections/
+│       ├── BioSection.tsx      # Bio / About Me detail
+│       ├── SkillsSection.tsx   # Skills with expandable categories + proficiency bars
+│       ├── EducationSection.tsx # Education timeline
+│       ├── ProjectsSection.tsx # Projects with gradient cards
+│       ├── ResearchSection.tsx # Research experiences
+│       ├── ExperienceSection.tsx # Professional experience
+│       ├── ContactSection.tsx  # Contact with copy-to-clipboard
+│       └── ResumeSection.tsx   # Resume with PDF preview
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🚀 Getting Started
 
-### `npm test`
+### Install dependencies
+```bash
+cd frontend
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Run development server
+```bash
+npm start
+```
 
-### `npm run build`
+### Build for production
+```bash
+npm run build
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ✏️ How to Customize
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Update Your Content
+**Edit `src/data/portfolioData.ts`** — this is the single source of truth for all portfolio content:
+- `profileData` — Name, subtitle, avatar
+- `highlightCard` — Status card content
+- `bioData` — Full bio, mission, interests
+- `skillsData` — Skills by category with proficiency levels
+- `educationData` — Schools, degrees, coursework
+- `projectsData` — Projects with tech stacks and gradients
+- `researchData` — Research experiences
+- `experienceData` — Work experience
+- `contactData` — Email, GitHub, LinkedIn
+- `resumeData` — Summary, highlights, PDF path
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Update Your Avatar
+Replace `/public/cu.png` with your own photo.
 
-### `npm run eject`
+### 3. Update Your Resume
+Replace `/public/CV.pdf` with your own resume PDF.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 4. Customize Section Themes
+Edit color variables in `src/index.css` under the `:root` and `[data-theme="light"]` blocks.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 5. Add/Remove Sections
+- Add a new section component in `src/components/sections/`
+- Add a new row in `SettingsHome.tsx`
+- Add the section key to the `SectionKey` type and `sectionConfig`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🎨 Design System
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+| Token | Dark | Light |
+|-------|------|-------|
+| Background | `#000000` | `#F2F2F7` |
+| Card Surface | `#1C1C1E` | `#FFFFFF` |
+| Primary Text | `#FFFFFF` | `#000000` |
+| Secondary Text | `#8E8E93` | `#3C3C43` |
+| Separator | `rgba(84,84,88,0.65)` | `rgba(60,60,67,0.29)` |
+| Accent Blue | `#0A84FF` | `#007AFF` |
 
-## Learn More
+## 📱 Section Color Themes
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| Section | Accent | Mood |
+|---------|--------|------|
+| Bio | Neutral gray | Elegant, personal |
+| Skills | Blue / Cyan | Technical, dynamic |
+| Education | Gold | Academic, prestigious |
+| Projects | Gradient | Vibrant, product-focused |
+| Research | Indigo / Purple | Analytical, intelligent |
+| Experience | Graphite / Steel | Executive, crisp |
+| Contact | Green | Fresh, approachable |
+| Resume | Monochrome | Professional, minimal |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🛠️ Tech Stack
+
+- **React 18** + TypeScript
+- **Tailwind CSS 3** (for utility classes)
+- **Framer Motion** (spring-based animations)
+- **React Router** (routing infrastructure)
+- **CSS Custom Properties** (design tokens, theme system)
+
+## 📄 License
+
+This project is for personal use. Customize freely.
