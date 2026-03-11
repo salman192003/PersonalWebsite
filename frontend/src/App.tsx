@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import SettingsHome from './components/SettingsHome';
+import DesktopDashboard from './components/desktop/DesktopDashboard';
 
 export const ThemeContext = createContext({
   theme: 'dark',
@@ -17,7 +18,7 @@ function App() {
     }
     return 'light';
   });
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -44,22 +45,13 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <Router>
         {isMobile ? (
-          // Mobile/Tablet: iOS Settings experience
+          /* ── Mobile/Tablet: iOS Settings experience (UNCHANGED) ── */
           <div className={`ios-app-container ${theme}`}>
             <SettingsHome />
           </div>
         ) : (
-          // Desktop: Show iOS Settings in a phone frame, centered
-          <div className={`desktop-container ${theme}`}>
-            <div className="desktop-phone-frame">
-              <SettingsHome />
-            </div>
-            {/* Desktop background branding */}
-            <div className="desktop-branding">
-              <h2 className="desktop-brand-name">Salman Ajmal</h2>
-              <p className="desktop-brand-sub">Portfolio</p>
-            </div>
-          </div>
+          /* ── Desktop: visionOS-inspired floating glass dashboard ── */
+          <DesktopDashboard />
         )}
       </Router>
     </ThemeContext.Provider>

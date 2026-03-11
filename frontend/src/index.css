@@ -1650,13 +1650,788 @@ body::after {
 }
 
 /* ============================================================
-   Responsive — Desktop adjustments
+   DESKTOP — visionOS-inspired Spatial Glass Dashboard
+   ============================================================
+   These styles ONLY apply at desktop widths. Mobile/tablet styles
+   above are completely untouched.
    ============================================================ */
-@media (min-width: 1025px) {
-  /* Desktop uses phone frame, no changes needed */
+
+/* ── Dashboard Container ── */
+.desktop-dashboard {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Tablet: slightly wider phone frame feel */
+/* ============================================================
+   AMBIENT BACKGROUND — 7-Layer Atmospheric System
+   ============================================================ */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ambient-bloom {
+  will-change: transform;
+}
+
+.ambient-bloom-1 {
+  width: 130%;
+  height: 130%;
+  top: -20%;
+  left: -15%;
+}
+
+.ambient-bloom-2 {
+  width: 120%;
+  height: 120%;
+  bottom: -15%;
+  right: -10%;
+}
+
+.ambient-bloom-accent {
+  width: 100%;
+  height: 100%;
+}
+
+/* Directional spotlight — top-center */
+.ambient-spotlight-dark {
+  background: radial-gradient(
+    ellipse 50% 25% at 50% -5%,
+    rgba(100, 120, 180, 0.06) 0%,
+    transparent 70%
+  );
+}
+
+.ambient-spotlight-light {
+  background: radial-gradient(
+    ellipse 50% 25% at 50% -5%,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 70%
+  );
+}
+
+/* Depth vignette — darkened edges */
+.ambient-vignette {
+  background: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+
+[data-theme="light"] .ambient-vignette {
+  background: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.03) 100%
+  );
+}
+
+/* Subtle noise texture */
+.ambient-noise {
+  opacity: 0.012;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* ============================================================
+   PERSPECTIVE STAGE — Creates z-depth for the layout
+   ============================================================ */
+.desktop-stage {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  perspective: 1800px;
+  perspective-origin: 50% 45%;
+}
+
+/* ============================================================
+   LAYOUT GRID
+   ============================================================ */
+.desktop-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr 220px;
+  gap: 28px;
+  padding: 44px 36px;
+  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  align-items: start;
+  transform-style: preserve-3d;
+}
+
+/* ── Columns with spatial z-offsets ── */
+.desktop-col-nav {
+  position: sticky;
+  top: 44px;
+  transform: translateZ(-15px);
+  transform-style: preserve-3d;
+}
+
+.desktop-col-content {
+  min-height: 0;
+  transform: translateZ(10px);
+  transform-style: preserve-3d;
+}
+
+.desktop-col-widgets {
+  position: sticky;
+  top: 44px;
+  transform: translateZ(-25px);
+  transform-style: preserve-3d;
+}
+
+/* ============================================================
+   GLASS PANEL — Shared spatial surface styles
+   ============================================================ */
+.glass-panel {
+  transition:
+    background 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   NAVIGATION PANEL
+   ============================================================ */
+.desktop-nav-panel {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ── Profile Card ── */
+.dnav-profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 20px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  outline: none;
+  transition: background 0.2s ease;
+}
+
+.dnav-profile:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="light"] .dnav-profile:hover {
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.dnav-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    0 0 0 2px rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="light"] .dnav-avatar {
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    0 0 0 2px rgba(255, 255, 255, 0.6);
+}
+
+.dnav-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Avatar online status ring */
+.dnav-avatar-ring {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #30D158;
+  border: 2.5px solid var(--ios-secondary-bg);
+  box-shadow: 0 0 6px rgba(48, 209, 88, 0.5);
+}
+
+.dnav-profile-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dnav-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ios-label);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.dnav-subtitle {
+  font-size: 12px;
+  color: var(--ios-secondary-label);
+  margin-top: 3px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Highlight Banner ── */
+.dnav-highlight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px 14px;
+}
+
+.dnav-highlight-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #30D158;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(48, 209, 88, 0.5);
+  animation: pulse-green 2s infinite;
+}
+
+.dnav-highlight-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.dnav-highlight-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+}
+
+.dnav-highlight-sub {
+  font-size: 11px;
+  color: var(--ios-secondary-label);
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+/* ── Luminous Separator ── */
+.dnav-separator {
+  height: 0.5px;
+  margin: 0 20px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--ios-separator) 20%,
+    var(--ios-separator) 80%,
+    transparent
+  );
+}
+
+/* ── Section List ── */
+.dnav-sections {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+}
+
+.dnav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  outline: none;
+  transition: background 0.2s ease;
+  z-index: 1;
+}
+
+.dnav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] .dnav-item:hover {
+  background: rgba(0, 0, 0, 0.025);
+}
+
+/* Active item glow background */
+.dnav-item-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  z-index: -1;
+}
+
+.dnav-item-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dnav-item-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+}
+
+.dnav-active-indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  border-radius: 2px;
+}
+
+/* ── Theme Toggle Row ── */
+.dnav-theme-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+}
+
+.dnav-theme-icon {
+  font-size: 17px;
+}
+
+.dnav-theme-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ios-label);
+  flex: 1;
+}
+
+/* ============================================================
+   CONTENT PANEL — Hero Surface
+   ============================================================ */
+.desktop-content-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: calc(100vh - 88px);
+  max-height: calc(100vh - 88px);
+  position: relative;
+}
+
+/* Section spotlight glow — top of panel */
+.dcontent-spotlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dcontent-header {
+  position: relative;
+  padding: 28px 32px 18px;
+  flex-shrink: 0;
+  z-index: 1;
+  border-bottom: 0.5px solid var(--ios-separator);
+}
+
+.dcontent-accent-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+}
+
+.dcontent-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ios-label);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.dcontent-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 28px 32px 48px;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  z-index: 1;
+}
+
+/* Custom scrollbar */
+.dcontent-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.dcontent-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dcontent-scroll::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.15);
+  border-radius: 3px;
+}
+
+.dcontent-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.3);
+}
+
+.dcontent-body {
+  max-width: 100%;
+}
+
+/* ============================================================
+   WIDGETS — Companion Surfaces
+   ============================================================ */
+.desktop-widgets {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ── Status Widget ── */
+.dwidget-status {
+  padding: 18px;
+}
+
+.dwidget-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.dwidget-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #30D158;
+  box-shadow: 0 0 10px rgba(48, 209, 88, 0.5);
+  animation: pulse-green 2s infinite;
+}
+
+.dwidget-status-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #30D158;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dwidget-status-detail {
+  font-size: 12px;
+  color: var(--ios-secondary-label);
+  line-height: 1.45;
+}
+
+/* ── Shared label ── */
+.dwidget-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ios-secondary-label);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* ── Quick Links ── */
+.dwidget-links {
+  padding: 18px;
+}
+
+.dwidget-link-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dwidget-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ios-label);
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.dwidget-link-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="light"] .dwidget-link-btn:hover {
+  background: rgba(0, 0, 0, 0.035);
+}
+
+.dwidget-link-btn span:first-child {
+  font-size: 16px;
+}
+
+/* ── Resume Widget ── */
+.dwidget-resume {
+  padding: 18px;
+}
+
+.dwidget-dl-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border-radius: 12px;
+  background: var(--ios-blue);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s ease;
+  box-shadow:
+    0 2px 8px rgba(0, 122, 255, 0.25),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.15);
+}
+
+.dwidget-dl-btn:hover {
+  opacity: 0.9;
+}
+
+/* ── Location Widget ── */
+.dwidget-location {
+  padding: 15px 18px;
+}
+
+.dwidget-loc-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dwidget-loc-icon {
+  font-size: 14px;
+}
+
+.dwidget-loc-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ios-secondary-label);
+}
+
+/* ============================================================
+   DESKTOP — Section Content Upgrades
+   Section components are reused from mobile but get richer
+   glass treatment at desktop widths.
+   ============================================================ */
+@media (min-width: 1025px) {
+  /* Bio — more spatial spacing */
+  .bio-section {
+    gap: 22px;
+  }
+
+  .bio-header {
+    padding: 32px 0 20px;
+  }
+
+  .bio-avatar-large {
+    width: 130px;
+    height: 130px;
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.15),
+      0 0 0 3px rgba(255, 255, 255, 0.05);
+  }
+
+  [data-theme="light"] .bio-avatar-large {
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.08),
+      0 0 0 3px rgba(255, 255, 255, 0.5);
+  }
+
+  .bio-name {
+    font-size: 32px;
+  }
+
+  /* Skills */
+  .skills-section {
+    gap: 14px;
+  }
+
+  /* Education */
+  .edu-content {
+    padding: 22px;
+  }
+
+  .edu-institution {
+    font-size: 18px;
+  }
+
+  /* Projects — more spacious */
+  .projects-section {
+    gap: 18px;
+  }
+
+  .project-card {
+    border-radius: 18px;
+  }
+
+  .project-title {
+    font-size: 18px;
+  }
+
+  /* Experience */
+  .exp-card {
+    padding: 22px;
+  }
+
+  /* Contact */
+  .contact-hero {
+    padding: 36px 0 14px;
+  }
+
+  .contact-hero-title {
+    font-size: 28px;
+  }
+
+  /* Resume */
+  .resume-iframe {
+    height: 600px;
+  }
+
+  /* Hide old desktop-container */
+  .desktop-container {
+    display: none !important;
+  }
+
+  /* ── Glass treatment for section cards ── */
+  .bio-card,
+  .skills-category,
+  .skills-all-pills,
+  .edu-content,
+  .project-card,
+  .research-card,
+  .exp-card,
+  .contact-list,
+  .resume-summary-card,
+  .resume-highlights-card {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.08),
+      0 4px 12px rgba(0, 0, 0, 0.06),
+      inset 0 0.5px 0 rgba(255, 255, 255, 0.04);
+    transition:
+      background 0.4s ease,
+      border-color 0.4s ease,
+      box-shadow 0.4s ease,
+      transform 0.3s ease;
+  }
+
+  .bio-card:hover,
+  .skills-category:hover,
+  .project-card:hover,
+  .research-card:hover,
+  .exp-card:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.1),
+      0 8px 24px rgba(0, 0, 0, 0.08),
+      inset 0 0.5px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  [data-theme="light"] .bio-card,
+  [data-theme="light"] .skills-category,
+  [data-theme="light"] .skills-all-pills,
+  [data-theme="light"] .edu-content,
+  [data-theme="light"] .project-card,
+  [data-theme="light"] .research-card,
+  [data-theme="light"] .exp-card,
+  [data-theme="light"] .contact-list,
+  [data-theme="light"] .resume-summary-card,
+  [data-theme="light"] .resume-highlights-card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.03),
+      0 4px 12px rgba(0, 0, 0, 0.04),
+      inset 0 0.5px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  [data-theme="light"] .bio-card:hover,
+  [data-theme="light"] .skills-category:hover,
+  [data-theme="light"] .project-card:hover,
+  [data-theme="light"] .research-card:hover,
+  [data-theme="light"] .exp-card:hover {
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.04),
+      0 8px 24px rgba(0, 0, 0, 0.06),
+      inset 0 0.5px 0 rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* ============================================================
+   Large Desktop (≥1440px)
+   ============================================================ */
+@media (min-width: 1440px) {
+  .desktop-layout {
+    grid-template-columns: 320px 1fr 260px;
+    gap: 36px;
+    padding: 52px 52px;
+    max-width: 1600px;
+  }
+}
+
+/* ============================================================
+   XL Desktop (≥1700px)
+   ============================================================ */
+@media (min-width: 1700px) {
+  .desktop-layout {
+    grid-template-columns: 340px 1fr 280px;
+    gap: 44px;
+    padding: 60px 72px;
+  }
+}
+
+/* ============================================================
+   Tablet (769–1024px)
+   ============================================================ */
 @media (min-width: 769px) and (max-width: 1024px) {
   .ios-app-container {
     display: flex;
@@ -1668,3 +2443,4 @@ body::after {
     width: 100%;
   }
 }
+
