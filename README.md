@@ -1,105 +1,16 @@
-# Personal Portfolio Website
+# React + Vite
 
-A modern and responsive personal portfolio website built with the MERN stack (MongoDB, Express.js, React.js, Node.js).
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Features
+Currently, two official plugins are available:
 
-- 🎨 Modern and clean design
-- 📱 Fully responsive
-- ✨ Smooth animations and transitions
-- 🎯 Project showcase
-- 📝 Contact form
-- 🌙 Dark theme
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Tech Stack
+## React Compiler
 
-- **Frontend:**
-  - React.js with TypeScript
-  - Material-UI
-  - Framer Motion
-  - Tailwind CSS
-  - React Router
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- **Backend:**
-  - Node.js
-  - Express.js
-  - MongoDB
-  - Mongoose
+## Expanding the ESLint configuration
 
-## Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd personal-portfolio
-   ```
-
-2. Install dependencies:
-   ```bash
-   # Install backend dependencies
-   npm install
-
-   # Install frontend dependencies
-   cd frontend
-   npm install
-   ```
-
-3. Create a `.env` file in the root directory and add your environment variables:
-   ```
-   PORT=5000
-   MONGODB_URI=your_mongodb_connection_string
-   ```
-
-4. Run the development server:
-   ```bash
-   # Run backend and frontend concurrently
-   npm run dev
-
-   # Or run them separately:
-   # Backend
-   npm run server
-
-   # Frontend
-   npm run client
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000) to view the website in your browser.
-
-## Project Structure
-
-```
-personal-portfolio/
-├── backend/
-│   ├── server.js
-│   └── ...
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── App.tsx
-│   │   └── ...
-│   └── package.json
-├── package.json
-└── README.md
-```
-
-## Customization
-
-1. Update the projects in `frontend/src/components/Projects.tsx`
-2. Modify the about section in `frontend/src/components/About.tsx`
-3. Update the contact form in `frontend/src/components/Contact.tsx`
-4. Customize colors and styling in `frontend/tailwind.config.js`
-
-## Deployment
-
-1. Build the frontend:
-   ```bash
-   cd frontend
-   npm run build
-   ```
-
-2. Deploy to your preferred hosting platform (e.g., Heroku, Vercel, Netlify)
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE). 
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
